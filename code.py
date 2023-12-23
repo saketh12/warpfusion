@@ -22,18 +22,18 @@ def wget_p(url, outputdir):
   print(res)
 
 try:
-    from google.colab import drive
-    print("Google Colab detected. Using Google Drive.")
-    is_colab = True
-    #@markdown If you connect your Google Drive, you can save the final image of each run on your drive.
-    google_drive = True #@param {type:"boolean"}
-    #@markdown Click here if you'd like to save the diffusion model checkpoint file to (and/or load from) your Google Drive:
-    save_models_to_google_drive = True #@param {type:"boolean"}
-except:
-    is_colab = False
-    google_drive = False
-    save_models_to_google_drive = False
-    print("Google Colab not detected.")
+#     from google.colab import drive
+#     print("Google Colab detected. Using Google Drive.")
+#     is_colab = True
+#     #@markdown If you connect your Google Drive, you can save the final image of each run on your drive.
+#     google_drive = True #@param {type:"boolean"}
+#     #@markdown Click here if you'd like to save the diffusion model checkpoint file to (and/or load from) your Google Drive:
+#     save_models_to_google_drive = True #@param {type:"boolean"}
+# except:
+is_colab = False
+google_drive = False
+save_models_to_google_drive = False
+print("Google Colab not detected.")
 
 if is_colab:
     if google_drive is True:
@@ -57,7 +57,7 @@ root_dir = os.getcwd()
 if is_colab:
     root_dir = '/content/'
     if google_drive and not save_models_to_google_drive or not google_drive:
-        model_path = '/content/models'
+        model_path = 'models'
         createPath(model_path)
     if google_drive and save_models_to_google_drive:
         model_path = f'{root_path}/models'
@@ -5103,7 +5103,7 @@ small_controlnet_model_path = ''
 download_control_model = True
 # #@param {'type':'boolean'}
 force_download = False #@param {'type':'boolean'}
-controlnet_models_dir = "/content/drive/MyDrive/models/ControlNet" #@param {'type':'string'}
+controlnet_models_dir = "models/ControlNet" #@param {'type':'string'}
 if not is_colab and (controlnet_models_dir.startswith('/content') or controlnet_models_dir=='' or controlnet_models_dir is None):
   controlnet_models_dir = f"{root_dir}/ControlNet/models"
   print('You have a controlnet path set up for google drive, but we are not on Colab. Defaulting controlnet model path to ', controlnet_models_dir)
@@ -5666,7 +5666,7 @@ else:
 #@markdown After saving model as pickle, you can then load it as your usual stable diffusion model in thecell above.\
 #@markdown The model will be saved under the same name with .pkl extenstion.
 save_model_pickle = False #@param {'type':'boolean'}
-save_folder = "/content/drive/MyDrive/models" #@param {'type':'string'}
+save_folder = "models" #@param {'type':'string'}
 if save_folder != '' and save_model_pickle:
   os.makedirs(save_folder, exist_ok=True)
   out_path = save_folder+model_path.replace('\\', '/').split('/')[-1].split('.')[0]+'.pkl'
