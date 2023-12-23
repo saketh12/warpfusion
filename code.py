@@ -3413,7 +3413,7 @@ stop_early = 0
 stop_early = min(steps-1,stop_early)
 #@markdown Specify desired output size here.\
 #@markdown Don't forget to rerun all steps after changing the width height (including forcing optical flow generation)
-width_height = [768,1280]#@param{type: 'raw'}
+width_height = [480,480]#@param{type: 'raw'}
 width_height = [int(o) for o in width_height]
 clip_guidance_scale = 0 #
 tv_scale =  0
@@ -3474,7 +3474,7 @@ if platform.system() != 'Linux' and not os.path.exists("ffmpeg.exe"):
 #@markdown ---
 
 
-video_init_path = "/content/drive/MyDrive/vids/init/Caritas kawaii - Minynaranja #SHORTS.mp4" #@param {type: 'string'}
+video_init_path = "bron2.mp4" #@param {type: 'string'}
 
 extract_nth_frame =  1#@param {type: 'number'}
 #@markdown *Specify frame range. end_frame=0 means fill the end of video*
@@ -5091,7 +5091,7 @@ class InstructPix2PixCFGDenoiser(nn.Module):
 dynamic_thresh = 2.
 device = 'cuda'
 # config_path = f"{root_dir}/stable-diffusion/configs/stable-diffusion/v1-inference.yaml"
-model_path = "/content/drive/MyDrive/models/revAnimated_v122.safetensors" #@param {'type':'string'}
+model_path = "model.safetensors" #@param {'type':'string'}
 import pickle
 #@markdown ---
 #@markdown ControlNet download settings
