@@ -5860,7 +5860,7 @@ if diff is not None:
   print(f'Peaks at frames: {peaks} for user_threshold of {user_threshold}')
 else: print('Please analyze frames in the previous cell  to plot graph')
 
-, threshold
+# , threshold
 #@title Create schedules from frame difference
 def adjust_schedule(diff, normal_val, new_scene_val, thresh, falloff_frames, sched=None):
   diff_array = np.array(diff)
