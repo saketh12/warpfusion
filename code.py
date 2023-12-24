@@ -154,11 +154,11 @@ force_xformers_reinstall = False #\@param {'type':'boolean'}
 use_torch_v2 = True #@param {'type':'boolean'}
 if force_torch_reinstall:
   print('Uninstalling torch...')
-  !pip uninstall torch  torchvision  torchaudio  cudatoolkit -y
-  !pip uninstall xformers -y
-  !conda uninstall pytorch torchvision  torchaudio  cudatoolkit -y
+  subprocess.run(['pip', 'uninstall', 'torch', 'torchvision', 'torchaudio', 'cudatoolkit', 'xformers', '-y'], check=True)
+  subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
+  
 
-!python -m pip -q install requests
+subprocess.run(['python', '-m', "pip", "-q", "install", "requests"], check=True)
 import requests
 
 torch_v2_install_failed = False
@@ -180,7 +180,8 @@ if platform.system() != 'Linux' or force_os == 'Windows':
   if use_torch_v2:
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      !python -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
+      subprocess.run(['python', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      # !python -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
       try:
         import torch
         torch_v2_install_failed = not torch.cuda.is_available()
@@ -199,13 +200,16 @@ if platform.system() != 'Linux' or force_os == 'Windows':
       if "3.10" in sys.version:
         if torchver == -1 or force_torch_reinstall:
             print('Installing torch v1.12.1')
-            !python -m pip -q install torch==1.12.1 torchvision==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu113
+            subprocess.run(['python', '-m', "pip", "-q", "install", "torch==1.12.1", 'torchvision==0.13.1', '--extra-index-url', 'https://download.pytorch.org/whl/cu113'], check=True)
+            # !python -m pip -q install torch==1.12.1 torchvision==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu113
         if "1.12" in get_version('torch'):
           print('Trying to install local xformers on Windows. Works only with pytorch 1.12.* and python 3.10.')
-          !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
+          subprocess.run(['python', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
+          # !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
         elif "1.13" in get_version('torch'):
           print('Trying to install local xformers on Windows. Works only with pytorch 1.13.* and python 3.10.')
-          !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
+          subprocess.run(['python', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
+          # !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
 try:
   if os.environ["IS_DOCKER"] == "1":
     print('Docker found. Skipping install.')
@@ -249,14 +253,18 @@ if os.environ["IS_DOCKER"]=="1":
   print('Docker detected. Skipping install.')
 
 if not skip_install:
-  !python -m pip -q install tqdm ipywidgets==7.7.1 protobuf==3.20.3
+  subprocess.run(['python', '-m', "pip", "-q", "install", "tqdm", "ipywidgets==7.7.1", 'protobuf==3.20.3'], check=True)
+  # !python -m pip -q install tqdm ipywidgets==7.7.1 protobuf==3.20.3
   from tqdm.notebook import tqdm
   progress_bar = tqdm(total=52)
   progress_bar.set_description("Installing dependencies")
   with io.capture_output(stderr=False) as captured:
-    !python -m pip -q install mediapipe piexif
-    !python -m pip -q install safetensors lark
-    !python -m pip -q uninstall torchtext -y
+    subprocess.run(['python', '-m', "pip", "-q", "install", "mediapipe", "piexif"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "safetensors", "lark"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
+    # !python -m pip -q install mediapipe piexif
+    # !python -m pip -q install safetensors lark
+    # !python -m pip -q uninstall torchtext -y
     progress_bar.update(3) #10
     gitclone('https://github.com/Sxela/sxela-stablediffusion', dest = 'stablediffusion')
     # !git clone -b sdp-attn https://github.com/Sxela/sxela-stablediffusion stablediffusion
@@ -279,51 +287,75 @@ if not skip_install:
           os.chdir( f'../')
     except: pass
     progress_bar.update(2) #25
-    !python -m pip -q install --ignore-installed Pillow==6.2.2
-    !python -m pip -q install -e ./stablediffusion
+    subprocess.run(['python', '-m', "pip", "-q", "install", "--ignore-installed", "Pillow==6.2.2"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "./stablediffusion"], check=True)
+    # !python -m pip -q install --ignore-installed Pillow==6.2.2
+    # !python -m pip -q install -e ./stablediffusion
     progress_bar.update(2)
-    !python -m pip -q install ipywidgets==7.7.1
-    !python -m pip -q install transformers==4.19.2
+    subprocess.run(['python', '-m', "pip", "-q", "install", "ipywidgets==7.7.1"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "transformers==4.19.2"], check=True)
+    # !python -m pip -q install ipywidgets==7.7.1
+    # !python -m pip -q install transformers==4.19.2
     progress_bar.update(2)
-    !python -m pip -q install omegaconf
-    !python -m pip -q install einops
-    !python -m pip -q install "pytorch_lightning>1.4.1,<=1.7.7"
+    subprocess.run(['python', '-m', "pip", "-q", "install", "omegaconf"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "einops"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "pytorch_lightning>1.4.1,<=1.7.7"], check=True)
+    # !python -m pip -q install omegaconf
+    # !python -m pip -q install einops
+    # !python -m pip -q install "pytorch_lightning>1.4.1,<=1.7.7"
     progress_bar.update(3) #30
-    !python -m pip -q install scikit-image
-    !python -m pip -q install opencv-python
+    subprocess.run(['python', '-m', "pip", "-q", "install", "scikit-image"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "opencv-python"], check=True)
+    # !python -m pip -q install scikit-image
+    # !python -m pip -q install opencv-python
     progress_bar.update(2)
-    !python -m pip -q install ai-tools
-    !python -m pip -q install cognitive-face
+    subprocess.run(['python', '-m', "pip", "-q", "install", "ai-tools"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "cognitive-face"], check=True)
+    # !python -m pip -q install ai-tools
+    # !python -m pip -q install cognitive-face
     progress_bar.update(2)
-    !python -m pip -q install zprint
-    !python -m pip -q install kornia==0.5.0
+    subprocess.run(['python', '-m', "pip", "-q", "install", "zprint"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "kornia==0.5.0"], check=True)
+    # !python -m pip -q install zprint
+    # !python -m pip -q install kornia==0.5.0
     import importlib
     progress_bar.update(2) #40
-    !python -m pip -q install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
-    !python -m pip -q install -e git+https://github.com/openai/CLIP.git@main#egg=clip
+    subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "git+https://github.com/openai/CLIP.git@main#egg=clip"], check=True)
+    # !python -m pip -q install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+    # !python -m pip -q install -e git+https://github.com/openai/CLIP.git@main#egg=clip
     progress_bar.update(2)
-    !python -m pip -q install lpips
-    !python -m pip -q install keras
+    subprocess.run(['python', '-m', "pip", "-q", "install", "lpips"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "keraas"], check=True)
+    # !python -m pip -q install lpips
+    # !python -m pip -q install keras
     progress_bar.update(2) #50
     gitclone('https://github.com/Sxela/k-diffusion')
     os.chdir( f'./k-diffusion')
     subprocess.run(['git', 'pull'])
-    !python -m pip -q install -e .
+    subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "."], check=True)
+    # !python -m pip -q install -e .
     os.chdir( f'../')
     import sys
     sys.path.append('./k-diffusion')
     progress_bar.update(1) #60
-    !python -m pip -q install wget
-    !python -m pip -q install webdataset
+    subprocess.run(['python', '-m', "pip", "-q", "install", "wget"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "webdataset"], check=True)
+    # !python -m pip -q install wget
+    # !python -m pip -q install webdataset
     progress_bar.update(2)
-
-    !python -m pip -q install open_clip_torch
-    !python -m pip -q install opencv-python==4.5.5.64
+    subprocess.run(['python', '-m', "pip", "-q", "install", "open_clip_torch"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "opencv-python==4.5.5.64"], check=True)
+    # !python -m pip -q install open_clip_torch
+    # !python -m pip -q install opencv-python==4.5.5.64
     progress_bar.update(2)
-    !python -m pip -q uninstall torchtext -y
-    !python -m pip -q install pandas matplotlib
+    subprocess.run(['python', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "pandas", "matplotlib"], check=True)
+    # !python -m pip -q uninstall torchtext -y
+    # !python -m pip -q install pandas matplotlib
     progress_bar.update(2)
-    !python -m pip -q install fvcore
+    subprocess.run(['python', '-m', "pip", "-q", "install", "fvcore"], check=True)
+    # !python -m pip -q install fvcore
     multipip_res = subprocess.run(['python','-m', 'pip', '-q','install', 'lpips', 'datetime', 'timm==0.6.13', 'ftfy', 'einops', 'pytorch-lightning', 'omegaconf'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     progress_bar.update(5)
     print(multipip_res)
@@ -373,17 +405,23 @@ if not skip_install:
     pipi('fairscale')
     progress_bar.update(3) #80
     os.chdir(root_dir)
-    !git clone https://github.com/xinntao/Real-ESRGAN
+    subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN"], check=True)
+    # !git clone https://github.com/xinntao/Real-ESRGAN
     os.chdir('./Real-ESRGAN')
-    !python -m pip -q install basicsr
-    !python -m pip -q install google-cloud-vision
-    !python -m pip -q install ffmpeg
+    subprocess.run(['python', '-m', "pip", "-q", "install", "basicsr"], check=True)
+    subprocess.run(['python', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
+    # !python -m pip -q install basicsr
+    # !python -m pip -q install google-cloud-vision
+    # !python -m pip -q install ffmpeg
     progress_bar.update(3) #9085
-    !python -m pip -q install -r requirements.txt
+    subprocess.run(['python', '-m', "pip", "-q", "install", "-r", "requirements.txt"], check=True)
+    # !python -m pip -q install -r requirements.txt
     progress_bar.update(1) #90
-    !python setup.py develop -q
+    subprocess.run(['python', 'setup.py', "develop", "-q"], check=True)
+    # !python setup.py develop -q
     os.chdir(root_dir)
-    !python -m pip -q install torchmetrics==0.11.4
+    subprocess.run(['python', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
+    # !python -m pip -q install torchmetrics==0.11.4
 
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
@@ -3589,12 +3627,14 @@ extract_background_mask = False #@param {'type':'boolean'}
 mask_video_path = '' #@param {'type':'string'}
 if extract_background_mask:
   os.chdir(root_dir)
-  !python -m pip -q install av pims
+  subprocess.run(['python', '-m', "pip", "-q", "install", "av", "pims"], check=True)
+  # !python -m pip -q install av pims
   gitclone('https://github.com/Sxela/RobustVideoMattingCLI')
   if mask_source == 'init_video':
     videoFramesAlpha = videoFramesFolder+'Alpha'
     createPath(videoFramesAlpha)
-    !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{videoFramesFolder}" --output_alpha "{root_dir}/alpha.mp4"
+    subprocess.run(['python', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{videoFramesFolder}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
+    # !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{videoFramesFolder}" --output_alpha "{root_dir}/alpha.mp4"
     extractFrames(f"{root_dir}/alpha.mp4", f"{videoFramesAlpha}", 1, 0, 999999999)
   if mask_source == 'mask_video':
     videoFramesAlpha = videoFramesFolder+'Alpha'
@@ -3602,7 +3642,8 @@ if extract_background_mask:
     maskVideoFrames = videoFramesFolder+'Mask'
     createPath(maskVideoFrames)
     extractFrames(mask_video_path, f"{maskVideoFrames}", extract_nth_frame, start_frame, end_frame)
-    !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{maskVideoFrames}" --output_alpha "{root_dir}/alpha.mp4"
+    subprocess.run(['python', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{maskVideoFrames}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
+    # !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{maskVideoFrames}" --output_alpha "{root_dir}/alpha.mp4"
     extractFrames(f"{root_dir}/alpha.mp4", f"{videoFramesAlpha}", 1, 0, 999999999)
 else:
   if mask_source == 'init_video':
@@ -3645,7 +3686,8 @@ if (not (os.path.exists(f'{root_dir}/raft'))) or force_download:
 else:
   os.chdir(root_dir)
   os.chdir('WarpFusion')
-  !git pull
+  subprocess.run(['git', 'pull'], check=True)
+  # !git pull
   os.chdir(root_dir)
 
 try:
@@ -4545,10 +4587,12 @@ if (animation_mode == 'Video Input') and (flow_warp):
           if reverse_cc_order:
             #old version, may be incorrect
             print('Doing bwd->fwd cc check')
-            !python "{cc_path}" --flow_fwd "{fwd}" --flow_bwd "{bwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
+            subprocess.run(['python', "{cc_path}", "--flow_fwd", "{fwd}", "--flow_bwd", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
+            # !python "{cc_path}" --flow_fwd "{fwd}" --flow_bwd "{bwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
           else:
             print('Doing fwd->bwd cc check')
-            !python "{cc_path}" --flow_fwd "{bwd}" --flow_bwd "{fwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
+            subprocess.run(['python', "{cc_path}", "--flow_fwd", "{bwd}", "--flow_bwd", "{fwd}", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
+            # !python "{cc_path}" --flow_fwd "{bwd}" --flow_bwd "{fwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
           # delete forward flow
           # for f in pathlib.Path(flo_fwd_folder).glob('*jpg_12.npy'):
           #   f.unlink()
@@ -9837,29 +9881,36 @@ try:
 except:
   root_dir = os.getcwd()
 
-
-!git clone https://github.com/Sxela/Segment-and-Track-Anything-CLI
+subprocess.run(['git', 'clone', "https://github.com/Sxela/Segment-and-Track-Anything-CLI"], check=True)
+# !git clone https://github.com/Sxela/Segment-and-Track-Anything-CLI
 os.chdir(os.path.join(root_dir,'Segment-and-Track-Anything-CLI'))
 
-!python -m pip install -e ./sam
-!python -m pip install -e git+https://github.com/IDEA-Research/GroundingDINO.git@main#egg=GroundingDINO
-!python -m pip install numpy opencv-python pycocotools matplotlib Pillow scikit-image
-!python -m pip install zip gdown ffmpeg
-
-!git clone https://github.com/ClementPinard/Pytorch-Correlation-extension.git
-!python -m pip install -e ./Pytorch-Correlation-extension
+subprocess.run(['python', "-m", 'pip', 'install', '-e', './sam'], check=True)
+subprocess.run(['python', "-m", 'pip', 'install', '-e', 'git+https://github.com/IDEA-Research/GroundingDINO.git@main#egg=GroundingDINO'], check=True)
+subprocess.run(['python', "-m", 'pip', 'install', 'numpy', 'opencv-python', "pycocotools", "matplotlib", "Pillow", "scikit-image"], check=True)
+subprocess.run(['python', "-m", 'pip', 'install', 'zip', "gdown", "ffmpeg"], check=True)
+subprocess.run(['python', "-m", 'pip', 'install', '-e', "./Pytorch-Correlation-extension"], check=True)
+# !python -m pip install -e ./sam
+# !python -m pip install -e git+https://github.com/IDEA-Research/GroundingDINO.git@main#egg=GroundingDINO
+# !python -m pip install numpy opencv-python pycocotools matplotlib Pillow scikit-image
+# !python -m pip install zip gdown ffmpeg
+subprocess.run(['git', 'clone', "https://github.com/ClementPinard/Pytorch-Correlation-extension.git"], check=True)
+# !git clone https://github.com/ClementPinard/Pytorch-Correlation-extension.git
+# !python -m pip install -e ./Pytorch-Correlation-extension
 
 os.chdir(os.path.join(root_dir,'Segment-and-Track-Anything-CLI'))
 os.makedirs(os.path.join(root_dir,'Segment-and-Track-Anything-CLI', 'ckpt'), exist_ok=True)
 
+subprocess.run(['gdown', "--id", "1QoChMkTVxdYZ_eBlZhK2acq9KMQZccPJ", '--output', './ckpt/R50_DeAOTL_PRE_YTB_DAV.pth'], check=True)
 # download aot-ckpt
-!gdown --id '1QoChMkTVxdYZ_eBlZhK2acq9KMQZccPJ' --output ./ckpt/R50_DeAOTL_PRE_YTB_DAV.pth
+# !gdown --id '1QoChMkTVxdYZ_eBlZhK2acq9KMQZccPJ' --output ./ckpt/R50_DeAOTL_PRE_YTB_DAV.pth
 
 # download sam-ckpt
-!wget -P ./ckpt https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
-
+subprocess.run(['wget', "-P", ".ckpt", 'https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth'], check=True)
+# !wget -P ./ckpt https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+subprocess.run(['wget', "-P", ".ckpt", 'https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth'], check=True)
 # download grounding-dino ckpt
-!wget -P ./ckpt https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
+# !wget -P ./ckpt https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
 
 #@title Detection setup
 #@markdown Use this cell to tweak detection settings, that will be later used on the whole video.
