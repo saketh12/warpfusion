@@ -2162,6 +2162,11 @@ result = subprocess.run(['ls'], capture_output=True, text=True)
 print(result.stdout)
 if result.returncode != 0:
     print("Error:", result.stderr)
+    
+    
+import os
+
+print(os.getcwd())
 
 from ldm.util import instantiate_from_config
 # from ldm.models.diffusion.ddim import DDIMSampler
