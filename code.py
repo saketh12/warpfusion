@@ -24,7 +24,7 @@ def wget_p(url, outputdir):
   res = subprocess.run(['wget', url, '-P', f'{outputdir}'], stdout=subprocess.PIPE).stdout.decode('utf-8')
   print(res)
 
-try:
+# try:
 #     from google.colab import drive
 #     print("Google Colab detected. Using Google Drive.")
 #     is_colab = True
