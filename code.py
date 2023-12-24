@@ -287,7 +287,7 @@ if not skip_install:
         os.chdir( f'../')
   except: pass
   progress_bar.update(2) #25
-  subprocess.run(['python', '-m', "pip", "-q", "install", "--ignore-installed", "Pillow==6.2.2"], check=True)
+  # subprocess.run(['python', '-m', "pip", "-q", "install", "--ignore-installed", "Pillow==6.2.2"], check=True)
   subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "./stablediffusion"], check=True)
   # !python -m pip -q install --ignore-installed Pillow==6.2.2
   # !python -m pip -q install -e ./stablediffusion
@@ -381,47 +381,47 @@ else:
   model_path = f'{root_path}/models'
 
 if not skip_install:
-  with io.capture_output(stderr=False) as captured:
-    try:
-      from guided_diffusion.script_util import create_model_and_diffusion
-    except:
-      if not os.path.exists("guided-diffusion"):
-        gitclone("https://github.com/crowsonkb/guided-diffusion")
-      sys.path.append(f'{PROJECT_DIR}/guided-diffusion')
-    progress_bar.update(1)
-    try:
-      from resize_right import resize
-    except:
-      if not os.path.exists("ResizeRight"):
-        gitclone("https://github.com/assafshocher/ResizeRight.git")
-      sys.path.append(f'{PROJECT_DIR}/ResizeRight')
-    progress_bar.update(1)
-    if not os.path.exists("BLIP"):
-        gitclone("https://github.com/salesforce/BLIP")
-        sys.path.append(f'{PROJECT_DIR}/BLIP')
-    progress_bar.update(1) #75
-    pipi('prettytable')
-    # pipi('basicsr')
-    pipi('fairscale')
-    progress_bar.update(3) #80
-    os.chdir(root_dir)
-    subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN"], check=True)
-    # !git clone https://github.com/xinntao/Real-ESRGAN
-    os.chdir('./Real-ESRGAN')
-    subprocess.run(['python', '-m', "pip", "-q", "install", "basicsr"], check=True)
-    subprocess.run(['python', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
-    # !python -m pip -q install basicsr
-    # !python -m pip -q install google-cloud-vision
-    # !python -m pip -q install ffmpeg
-    progress_bar.update(3) #9085
-    subprocess.run(['python', '-m', "pip", "-q", "install", "-r", "requirements.txt"], check=True)
-    # !python -m pip -q install -r requirements.txt
-    progress_bar.update(1) #90
-    subprocess.run(['python', 'setup.py', "develop", "-q"], check=True)
-    # !python setup.py develop -q
-    os.chdir(root_dir)
-    subprocess.run(['python', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
-    # !python -m pip -q install torchmetrics==0.11.4
+  # with io.capture_output(stderr=False) as captured:
+  try:
+    from guided_diffusion.script_util import create_model_and_diffusion
+  except:
+    if not os.path.exists("guided-diffusion"):
+      gitclone("https://github.com/crowsonkb/guided-diffusion")
+    sys.path.append(f'{PROJECT_DIR}/guided-diffusion')
+  progress_bar.update(1)
+  try:
+    from resize_right import resize
+  except:
+    if not os.path.exists("ResizeRight"):
+      gitclone("https://github.com/assafshocher/ResizeRight.git")
+    sys.path.append(f'{PROJECT_DIR}/ResizeRight')
+  progress_bar.update(1)
+  if not os.path.exists("BLIP"):
+      gitclone("https://github.com/salesforce/BLIP")
+      sys.path.append(f'{PROJECT_DIR}/BLIP')
+  progress_bar.update(1) #75
+  pipi('prettytable')
+  # pipi('basicsr')
+  pipi('fairscale')
+  progress_bar.update(3) #80
+  os.chdir(root_dir)
+  subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN"], check=True)
+  # !git clone https://github.com/xinntao/Real-ESRGAN
+  os.chdir('./Real-ESRGAN')
+  subprocess.run(['python', '-m', "pip", "-q", "install", "basicsr"], check=True)
+  subprocess.run(['python', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
+  # !python -m pip -q install basicsr
+  # !python -m pip -q install google-cloud-vision
+  # !python -m pip -q install ffmpeg
+  progress_bar.update(3) #9085
+  subprocess.run(['python', '-m', "pip", "-q", "install", "-r", "requirements.txt"], check=True)
+  # !python -m pip -q install -r requirements.txt
+  progress_bar.update(1) #90
+  subprocess.run(['python', 'setup.py', "develop", "-q"], check=True)
+  # !python setup.py develop -q
+  os.chdir(root_dir)
+  subprocess.run(['python', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
+  # !python -m pip -q install torchmetrics==0.11.4
 
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
