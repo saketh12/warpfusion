@@ -2168,7 +2168,7 @@ import os
 
 print(os.getcwd())
 
-from ldm.util import instantiate_from_config
+# from ldm.util import instantiate_from_config
 # from ldm.models.diffusion.ddim import DDIMSampler
 # from ldm.models.diffusion.plms import PLMSSampler
 from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
