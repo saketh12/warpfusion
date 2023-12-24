@@ -3502,7 +3502,12 @@ createPath(batchFolder)
 use_looped_init_image = False #@param {'type':'boolean'}
 video_duration_sec = 2 #@param {'type':'number'}
 if use_looped_init_image:
-  !ffmpeg -loop 1 -i "{init_image}" -c:v libx264 -t "{video_duration_sec}" -pix_fmt yuv420p -vf scale={side_x}:{side_y} "{root_dir}/out.mp4" -y
+  subprocess.run(
+        'ffmpeg -loop 1 -i "/path/to/init_image.jpg" -c:v libx264 -t "duration_in_seconds" -pix_fmt yuv420p -vf scale=width:height "/path/to/root_dir/out.mp4" -y',
+        shell=True,
+        check=True
+  )
+  # !ffmpeg -loop 1 -i "{init_image}" -c:v libx264 -t "{video_duration_sec}" -pix_fmt yuv420p -vf scale={side_x}:{side_y} "{root_dir}/out.mp4" -y
   print('Video saved to ', f"{root_dir}/out.mp4")
 
 #@title ##Video Input Settings:
