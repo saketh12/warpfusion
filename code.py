@@ -405,7 +405,7 @@ if not skip_install:
   pipi('fairscale')
   progress_bar.update(3) #80
   os.chdir(root_dir)
-  subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN"], check=True)
+  subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN.git"], check=True)
   # !git clone https://github.com/xinntao/Real-ESRGAN
   os.chdir('./Real-ESRGAN')
   subprocess.run(['python', '-m', "pip", "-q", "install", "basicsr"], check=True)
@@ -461,7 +461,7 @@ from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 import random
-from ipywidgets import Output
+# from ipywidgets import Output
 import hashlib
 from functools import partial
 if is_colab:
@@ -1447,7 +1447,7 @@ def do_run():
 
 
 
-      image_display = Output()
+      # image_display = Output()
       for i in range(args.n_batches):
           if args.animation_mode == 'None':
             # display.clear_output(wait=True)
