@@ -218,8 +218,8 @@ except:
 
 if (is_colab or (platform.system() == 'Linux') or force_os == 'Linux') and os.environ["IS_DOCKER"]=="0":
   from subprocess import getoutput
-  from IPython.display import HTML
-  from IPython.display import clear_output
+  # from IPython.display import HTML
+  # from IPython.display import clear_output
   import time
   #https://github.com/TheLastBen/fast-stable-diffusion
   s = getoutput('nvidia-smi')
@@ -255,7 +255,7 @@ if os.environ["IS_DOCKER"]=="1":
 if not skip_install:
   subprocess.run(['python', '-m', "pip", "-q", "install", "tqdm", "ipywidgets==7.7.1", 'protobuf==3.20.3'], check=True)
   # !python -m pip -q install tqdm ipywidgets==7.7.1 protobuf==3.20.3
-  from tqdm.notebook import tqdm
+  from tqdm import tqdm
   progress_bar = tqdm(total=52)
   progress_bar.set_description("Installing dependencies")
   with io.capture_output(stderr=False) as captured:
@@ -453,7 +453,7 @@ from torch import nn
 from torch.nn import functional as F
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 # from CLIP import clip
 from resize_right import resize
 from guided_diffusion.script_util import create_model_and_diffusion, model_and_diffusion_defaults
@@ -1154,7 +1154,7 @@ def do_3d_step(img_filepath, frame_num, forward_clip):
 
             return warped
 
-from tqdm.notebook import trange
+from tqdm import trange
 import copy
 
 def get_frame_from_color_mode(mode, offset, frame_num):
@@ -3933,7 +3933,7 @@ if animation_mode == 'Video Input':
   import numpy as np
   import argparse, PIL, cv2
   from PIL import Image
-  from tqdm.notebook import tqdm
+  from tqdm import tqdm
   from glob import glob
   import torch
   import scipy.ndimage
@@ -4672,7 +4672,7 @@ import wget
 import accelerate
 import torch
 import torch.nn as nn
-from tqdm.notebook import trange, tqdm
+from tqdm import trange, tqdm
 sys.path.append('./k-diffusion')
 
 
@@ -5815,7 +5815,7 @@ if diff_function == 'rmse+lpips':
 if analyze_video:
   diff = [0]
   frames = sorted(glob(f'{videoFramesFolder}/*.jpg'))
-  from tqdm.notebook import trange
+  from tqdm import trange
   for i in trange(1,len(frames)):
     with torch.no_grad():
       diff.append(diff_func(load_img_lpips(frames[i-1]), load_img_lpips(frames[i])).sum().mean().detach().cpu().numpy())
@@ -5860,7 +5860,7 @@ if diff is not None:
   print(f'Peaks at frames: {peaks} for user_threshold of {user_threshold}')
 else: print('Please analyze frames in the previous cell  to plot graph')
 
-# , threshold
+, threshold
 #@title Create schedules from frame difference
 def adjust_schedule(diff, normal_val, new_scene_val, thresh, falloff_frames, sched=None):
   diff_array = np.array(diff)
@@ -5997,7 +5997,7 @@ if make_captions and caption_keyframes is not None:
     createPath(videoFramesCaptions)
 
 
-  from tqdm.notebook import trange
+  from tqdm import trange
 
   for f in pathlib.Path(videoFramesCaptions).glob('*.txt'):
           f.unlink()
@@ -9416,7 +9416,7 @@ torch.cuda.empty_cache()
 import PIL
 #@title ### **Create video**
 #@markdown Video file will save in the same folder as your images.
-from tqdm.notebook import trange
+from tqdm import trange
 skip_video_for_run_all = False #@param {type: 'boolean'}
 #@markdown ### **Video masking (post-processing)**
 #@markdown Use previously generated background mask during video creation
@@ -10226,7 +10226,7 @@ else:
 
   segtracker = SegTracker(segtracker_args, sam_args, aot_args)
   segtracker.restart_tracker()
-  from tqdm.notebook import tqdm, trange
+  from tqdm import tqdm, trange
   if start_frame == 0 and end_frame == 0:
     frame_range = trange(len(frames))
   else:
