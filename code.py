@@ -2158,6 +2158,7 @@ from pytorch_lightning import seed_everything
 
 os.chdir(f"{root_dir}/stablediffusion")
 
+print("SUB PROCESSSS COMMAND")
 result = subprocess.run(['ls'], capture_output=True, text=True)
 print(result.stdout)
 if result.returncode != 0:
@@ -2166,12 +2167,13 @@ if result.returncode != 0:
     
 import os
 
+print("OSSS COMMAND")
 print(os.getcwd())
 
 # # from ldm.util import instantiate_from_config
 # # from ldm.models.diffusion.ddim import DDIMSampler
 # # from ldm.models.diffusion.plms import PLMSSampler
-from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
+# from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
 # os.chdir(f"{root_dir}")
 
 
