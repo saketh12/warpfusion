@@ -326,7 +326,7 @@ if not skip_install:
   # !python -m pip -q install -e git+https://github.com/openai/CLIP.git@main#egg=clip
   progress_bar.update(2)
   subprocess.run(['python', '-m', "pip", "-q", "install", "lpips"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "keraas"], check=True)
+  subprocess.run(['python', '-m', "pip", "-q", "install", "keras"], check=True)
   # !python -m pip -q install lpips
   # !python -m pip -q install keras
   progress_bar.update(2) #50
