@@ -242,7 +242,7 @@ if (is_colab or (platform.system() == 'Linux') or force_os == 'Linux') and os.en
   print(' DONE !')
 
 #@title 1.3 Install SD Dependencies
-from IPython.utils import io
+# from IPython.utils import io
 
 #@markdown Enable skip_install to avoid reinstalling dependencies after the initial setup.
 skip_install = False #@param {'type':'boolean'}
