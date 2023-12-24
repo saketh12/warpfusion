@@ -330,7 +330,7 @@ if not skip_install:
   # !python -m pip -q install lpips
   # !python -m pip -q install keras
   progress_bar.update(2) #50
-  gitclone('https://github.com/Sxela/k-diffusion')
+  gitclone('https://github.com/Sxela/k-diffusion.git')
   os.chdir( f'./k-diffusion')
   subprocess.run(['git', 'pull'])
   subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "."], check=True)
@@ -386,7 +386,7 @@ if not skip_install:
     from guided_diffusion.script_util import create_model_and_diffusion
   except:
     if not os.path.exists("guided-diffusion"):
-      gitclone("https://github.com/crowsonkb/guided-diffusion")
+      gitclone("https://github.com/crowsonkb/guided-diffusion.git")
     sys.path.append(f'{PROJECT_DIR}/guided-diffusion')
   progress_bar.update(1)
   try:
@@ -2157,9 +2157,15 @@ import time
 from pytorch_lightning import seed_everything
 
 os.chdir(f"{root_dir}/stablediffusion")
+
+result = subprocess.run(['ls'], capture_output=True, text=True)
+print(result.stdout)
+if result.returncode != 0:
+    print("Error:", result.stderr)
+
 from ldm.util import instantiate_from_config
-from ldm.models.diffusion.ddim import DDIMSampler
-from ldm.models.diffusion.plms import PLMSSampler
+# from ldm.models.diffusion.ddim import DDIMSampler
+# from ldm.models.diffusion.plms import PLMSSampler
 from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
 os.chdir(f"{root_dir}")
 
@@ -9886,7 +9892,7 @@ try:
 except:
   root_dir = os.getcwd()
 
-subprocess.run(['git', 'clone', "https://github.com/Sxela/Segment-and-Track-Anything-CLI"], check=True)
+subprocess.run(['git', 'clone', "https://github.com/Sxela/Segment-and-Track-Anything-CLI.git"], check=True)
 # !git clone https://github.com/Sxela/Segment-and-Track-Anything-CLI
 os.chdir(os.path.join(root_dir,'Segment-and-Track-Anything-CLI'))
 
