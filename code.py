@@ -2179,8 +2179,8 @@ sys.path.append(os.getcwd())  # Add the current working directory to sys.path
 # from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
 
 from ldm.util import instantiate_from_config
-# # from ldm.models.diffusion.ddim import DDIMSampler
-# # from ldm.models.diffusion.plms import PLMSSampler
+# from ldm.models.diffusion.ddim import DDIMSampler
+# from ldm.models.diffusion.plms import PLMSSampler
 from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
 os.chdir(f"{root_dir}")
 
@@ -4651,44 +4651,23 @@ preview = hstack(vframes)
 del vframes, hframes
 fit(preview, 1024)
 
-"""# Load up a stable.
 
-Don't forget to place your checkpoint at /content/ and change the path accordingly.
-
-
-You need to log on to https://huggingface.co and
-
-get checkpoints here -
-https://huggingface.co/CompVis/stable-diffusion-v-1-4-original
-
-https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt
-or
-https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4-full-ema.ckpt
-
-You can pick 1.2 or 1.3 as well, just be sure to grab the "original" flavor.
-
-For v2 go here:
-https://huggingface.co/stabilityai/stable-diffusion-2-depth
-https://huggingface.co/stabilityai/stable-diffusion-2-base
-
-Inpainting model: https://huggingface.co/runwayml/stable-diffusion-v1-5
-"""
 
 #@markdown specify path to your Stable Diffusion checkpoint (the "original" flavor)
 #@title define SD + K functions, load model
 from safetensors import safe_open
 import argparse
 import math,os,time
-try:
-  os.chdir( f'{root_dir}/src/taming-transformers')
-  import taming
-  os.chdir( f'{root_dir}')
-  os.chdir( f'{root_dir}/k-diffusion')
-  import k_diffusion as K
-  os.chdir( f'{root_dir}')
-except:
-  import taming
-  import k_diffusion as K
+# try:
+#   os.chdir( f'{root_dir}/src/taming-transformers')
+#   import taming
+#   os.chdir( f'{root_dir}')
+#   os.chdir( f'{root_dir}/k-diffusion')
+#   import k_diffusion as K
+#   os.chdir( f'{root_dir}')
+# except:
+import taming
+import k_diffusion as K
 import wget
 import accelerate
 import torch
