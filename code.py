@@ -4658,16 +4658,16 @@ fit(preview, 1024)
 from safetensors import safe_open
 import argparse
 import math,os,time
-# try:
-#   os.chdir( f'{root_dir}/src/taming-transformers')
-#   import taming
-#   os.chdir( f'{root_dir}')
-#   os.chdir( f'{root_dir}/k-diffusion')
-#   import k_diffusion as K
-#   os.chdir( f'{root_dir}')
-# except:
-import taming
-import k_diffusion as K
+try:
+  os.chdir( f'{root_dir}/src/taming-transformers')
+  import taming
+  os.chdir( f'{root_dir}')
+  os.chdir( f'{root_dir}/k-diffusion')
+  import k_diffusion as K
+  os.chdir( f'{root_dir}')
+except:
+  # import taming
+  import k_diffusion as K
 import wget
 import accelerate
 import torch
