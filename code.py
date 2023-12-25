@@ -2171,7 +2171,12 @@ print("OSSSSS PATH")
 print(os.getcwd())
 
 import sys
-print(sys.path)
+# print(sys.path)
+
+sys.path.append(os.getcwd())  # Add the current working directory to sys.path
+
+# Now try the import
+from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
 
 # # from ldm.util import instantiate_from_config
 # # from ldm.models.diffusion.ddim import DDIMSampler
