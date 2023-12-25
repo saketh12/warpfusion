@@ -2158,7 +2158,7 @@ from pytorch_lightning import seed_everything
 
 os.chdir(f"{root_dir}/stablediffusion")
 
-print("SUB PROCESSSS COMMAND")
+print("subprocess pathhh")
 result = subprocess.run(['ls'], capture_output=True, text=True)
 print(result.stdout)
 if result.returncode != 0:
@@ -2167,8 +2167,11 @@ if result.returncode != 0:
     
 import os
 
-print("OSSS COMMAND")
+print("OSSSSS PATH")
 print(os.getcwd())
+
+import sys
+print(sys.path)
 
 # # from ldm.util import instantiate_from_config
 # # from ldm.models.diffusion.ddim import DDIMSampler
