@@ -7885,42 +7885,42 @@ print('Loras/LyCos detected:\n','\n'.join(list(available_loras.keys())))
 # #@title gui
 
 # #@markdown Load settings from txt file or output frame image
-# gui_difficulty_dict = {
-#     "I'm too young to die.":["flow_warp", "warp_strength","warp_mode","padding_mode","padding_ratio",
-#       "warp_towards_init", "flow_override_map", "mask_clip", "warp_num_k","warp_forward",
-#       "blend_json_schedules", "VERBOSE","offload_model", "do_softcap", "softcap_thresh",
-#       "softcap_q", "user_comment","turbo_mode","turbo_steps", "colormatch_turbo",
-#       "turbo_frame_skips_steps","soften_consistency_mask_for_turbo_frames", "check_consistency",
-#       "missed_consistency_weight","overshoot_consistency_weight", "edges_consistency_weight",
-#       "soften_consistency_mask","consistency_blur","match_color_strength","mask_result",
-#       "use_patchmatch_inpaiting","normalize_latent","normalize_latent_offset","latent_fixed_mean",
-#       "latent_fixed_std","latent_norm_4d","use_karras_noise", "cond_image_src", "inpainting_mask_source",
-#       "inverse_inpainting_mask", "inpainting_mask_weight", "init_grad", "grad_denoised",
-#       "image_scale_schedule","blend_latent_to_init","dynamic_thresh","rec_cfg", "rec_source",
-#       "rec_steps_pct", "controlnet_multimodel_mode",
-#       "overwrite_rec_noise",
-#       "colormatch_after","sat_scale", "clamp_grad", "apply_mask_after_warp"],
-#     "Hey, not too rough.":["flow_warp", "warp_strength","warp_mode",
-#       "warp_towards_init", "flow_override_map", "mask_clip", "warp_num_k","warp_forward",
+gui_difficulty_dict = {
+    "I'm too young to die.":["flow_warp", "warp_strength","warp_mode","padding_mode","padding_ratio",
+      "warp_towards_init", "flow_override_map", "mask_clip", "warp_num_k","warp_forward",
+      "blend_json_schedules", "VERBOSE","offload_model", "do_softcap", "softcap_thresh",
+      "softcap_q", "user_comment","turbo_mode","turbo_steps", "colormatch_turbo",
+      "turbo_frame_skips_steps","soften_consistency_mask_for_turbo_frames", "check_consistency",
+      "missed_consistency_weight","overshoot_consistency_weight", "edges_consistency_weight",
+      "soften_consistency_mask","consistency_blur","match_color_strength","mask_result",
+      "use_patchmatch_inpaiting","normalize_latent","normalize_latent_offset","latent_fixed_mean",
+      "latent_fixed_std","latent_norm_4d","use_karras_noise", "cond_image_src", "inpainting_mask_source",
+      "inverse_inpainting_mask", "inpainting_mask_weight", "init_grad", "grad_denoised",
+      "image_scale_schedule","blend_latent_to_init","dynamic_thresh","rec_cfg", "rec_source",
+      "rec_steps_pct", "controlnet_multimodel_mode",
+      "overwrite_rec_noise",
+      "colormatch_after","sat_scale", "clamp_grad", "apply_mask_after_warp"],
+    "Hey, not too rough.":["flow_warp", "warp_strength","warp_mode",
+      "warp_towards_init", "flow_override_map", "mask_clip", "warp_num_k","warp_forward",
 
-#       "check_consistency",
+      "check_consistency",
 
-#       "use_patchmatch_inpaiting","init_grad", "grad_denoised",
-#       "image_scale_schedule","blend_latent_to_init","rec_cfg",
+      "use_patchmatch_inpaiting","init_grad", "grad_denoised",
+      "image_scale_schedule","blend_latent_to_init","rec_cfg",
 
-#       "colormatch_after","sat_scale", "clamp_grad", "apply_mask_after_warp"],
-#     "Hurt me plenty.":"",
-#     "Ultra-Violence.":[]
-# }
+      "colormatch_after","sat_scale", "clamp_grad", "apply_mask_after_warp"],
+    "Hurt me plenty.":"",
+    "Ultra-Violence.":[]
+}
 # import traceback
-# gui_difficulty = "Hey, not too rough." #@param ["I'm too young to die.", "Hey, not too rough.", "Ultra-Violence."]
-# print(f'Using "{gui_difficulty}" gui difficulty. Please switch to another difficulty\nto unlock up to {len(gui_difficulty_dict[gui_difficulty])} more settings when you`re ready :D')
-# settings_path = '-1' #@param {'type':'string'}
-# load_settings_from_file = True #@param {'type':'boolean'}
-# #@markdown Disable to load settings into GUI from colab cells. You will need to re-run colab cells you've edited to apply changes, then re-run the gui cell.\
-# #@markdown Enable to keep GUI state.
-# keep_gui_state_on_cell_rerun = True #@param {'type':'boolean'}
-# settings_out = batchFolder+f"/settings"
+gui_difficulty = "Hey, not too rough." #@param ["I'm too young to die.", "Hey, not too rough.", "Ultra-Violence."]
+print(f'Using "{gui_difficulty}" gui difficulty. Please switch to another difficulty\nto unlock up to {len(gui_difficulty_dict[gui_difficulty])} more settings when you`re ready :D')
+settings_path = '-1' #@param {'type':'string'}
+load_settings_from_file = True #@param {'type':'boolean'}
+#@markdown Disable to load settings into GUI from colab cells. You will need to re-run colab cells you've edited to apply changes, then re-run the gui cell.\
+#@markdown Enable to keep GUI state.
+keep_gui_state_on_cell_rerun = True #@param {'type':'boolean'}
+settings_out = batchFolder+f"/settings"
 # from  ipywidgets import HTML, IntRangeSlider, FloatRangeSlider, jslink, Layout, VBox, HBox, Tab, Label, IntText, Dropdown, Text, Accordion, Button, Output, Textarea, FloatSlider, FloatText, Checkbox, SelectionSlider, Valid
 
 # def desc_widget(widget, desc, width=80, h=True):
@@ -8059,157 +8059,157 @@ print('Loras/LyCos detected:\n','\n'.join(list(available_loras.keys())))
 #         else:
 #             return super.__getattr__(attr)
 
-# def set_visibility(key, value, obj):
-#     if isinstance(obj, dict):
-#         if key in obj.keys():
-#           obj[key].layout.visibility = value
+def set_visibility(key, value, obj):
+    if isinstance(obj, dict):
+        if key in obj.keys():
+          obj[key].layout.visibility = value
 
 
 # #try keep settings on occasional run cell
-# if keep_gui_state_on_cell_rerun:
-#   try:
+if keep_gui_state_on_cell_rerun:
+  try:
 
-#     latent_scale_schedule=eval(get_value('latent_scale_schedule',guis))
-#     init_scale_schedule=eval(get_value('init_scale_schedule',guis))
-#     steps_schedule=eval(get_value('steps_schedule',guis))
-#     style_strength_schedule=eval(get_value('style_strength_schedule',guis))
-#     cfg_scale_schedule=eval(get_value('cfg_scale_schedule',guis))
-#     flow_blend_schedule=eval(get_value('flow_blend_schedule',guis))
-#     image_scale_schedule=eval(get_value('image_scale_schedule',guis))
+    latent_scale_schedule=eval(get_value('latent_scale_schedule',guis))
+    init_scale_schedule=eval(get_value('init_scale_schedule',guis))
+    steps_schedule=eval(get_value('steps_schedule',guis))
+    style_strength_schedule=eval(get_value('style_strength_schedule',guis))
+    cfg_scale_schedule=eval(get_value('cfg_scale_schedule',guis))
+    flow_blend_schedule=eval(get_value('flow_blend_schedule',guis))
+    image_scale_schedule=eval(get_value('image_scale_schedule',guis))
 
-#     user_comment= get_value('user_comment',guis)
-#     blend_json_schedules=get_value('blend_json_schedules',guis)
-#     VERBOSE=get_value('VERBOSE',guis)
+    user_comment= get_value('user_comment',guis)
+    blend_json_schedules=get_value('blend_json_schedules',guis)
+    VERBOSE=get_value('VERBOSE',guis)
 
-#     #mask
-#     use_background_mask=get_value('use_background_mask',guis)
-#     invert_mask=get_value('invert_mask',guis)
-#     background=get_value('background',guis)
-#     background_source=get_value('background_source',guis)
-#     (mask_clip_low, mask_clip_high) = get_value('mask_clip',guis)
+    #mask
+    use_background_mask=get_value('use_background_mask',guis)
+    invert_mask=get_value('invert_mask',guis)
+    background=get_value('background',guis)
+    background_source=get_value('background_source',guis)
+    (mask_clip_low, mask_clip_high) = get_value('mask_clip',guis)
 
 
-#     #turbo
-#     turbo_mode=get_value('turbo_mode',guis)
-#     turbo_steps=get_value('turbo_steps',guis)
-#     colormatch_turbo=get_value('colormatch_turbo',guis)
-#     turbo_frame_skips_steps=get_value('turbo_frame_skips_steps',guis)
-#     soften_consistency_mask_for_turbo_frames=get_value('soften_consistency_mask_for_turbo_frames',guis)
+    #turbo
+    turbo_mode=get_value('turbo_mode',guis)
+    turbo_steps=get_value('turbo_steps',guis)
+    colormatch_turbo=get_value('colormatch_turbo',guis)
+    turbo_frame_skips_steps=get_value('turbo_frame_skips_steps',guis)
+    soften_consistency_mask_for_turbo_frames=get_value('soften_consistency_mask_for_turbo_frames',guis)
 
-#     #warp
-#     flow_warp= get_value('flow_warp',guis)
-#     apply_mask_after_warp=get_value('apply_mask_after_warp',guis)
-#     warp_num_k=get_value('warp_num_k',guis)
-#     warp_forward=get_value('warp_forward',guis)
-#     warp_strength=get_value('warp_strength',guis)
-#     flow_override_map=eval(get_value('flow_override_map',guis))
-#     warp_mode=get_value('warp_mode',guis)
-#     warp_towards_init=get_value('warp_towards_init',guis)
+    #warp
+    flow_warp= get_value('flow_warp',guis)
+    apply_mask_after_warp=get_value('apply_mask_after_warp',guis)
+    warp_num_k=get_value('warp_num_k',guis)
+    warp_forward=get_value('warp_forward',guis)
+    warp_strength=get_value('warp_strength',guis)
+    flow_override_map=eval(get_value('flow_override_map',guis))
+    warp_mode=get_value('warp_mode',guis)
+    warp_towards_init=get_value('warp_towards_init',guis)
 
-#     #cc
-#     check_consistency=get_value('check_consistency',guis)
-#     missed_consistency_weight=get_value('missed_consistency_weight',guis)
-#     overshoot_consistency_weight=get_value('overshoot_consistency_weight',guis)
-#     edges_consistency_weight=get_value('edges_consistency_weight',guis)
-#     consistency_blur=get_value('consistency_blur',guis)
-#     consistency_dilate=get_value('consistency_dilate',guis)
-#     padding_ratio=get_value('padding_ratio',guis)
-#     padding_mode=get_value('padding_mode',guis)
-#     match_color_strength=get_value('match_color_strength',guis)
-#     soften_consistency_mask=get_value('soften_consistency_mask',guis)
-#     mask_result=get_value('mask_result',guis)
-#     use_patchmatch_inpaiting=get_value('use_patchmatch_inpaiting',guis)
+    #cc
+    check_consistency=get_value('check_consistency',guis)
+    missed_consistency_weight=get_value('missed_consistency_weight',guis)
+    overshoot_consistency_weight=get_value('overshoot_consistency_weight',guis)
+    edges_consistency_weight=get_value('edges_consistency_weight',guis)
+    consistency_blur=get_value('consistency_blur',guis)
+    consistency_dilate=get_value('consistency_dilate',guis)
+    padding_ratio=get_value('padding_ratio',guis)
+    padding_mode=get_value('padding_mode',guis)
+    match_color_strength=get_value('match_color_strength',guis)
+    soften_consistency_mask=get_value('soften_consistency_mask',guis)
+    mask_result=get_value('mask_result',guis)
+    use_patchmatch_inpaiting=get_value('use_patchmatch_inpaiting',guis)
 
-#     #diffusion
-#     text_prompts=eval(get_value('text_prompts',guis))
-#     negative_prompts=eval(get_value('negative_prompts',guis))
-#     prompt_patterns_sched = eval(get_value('prompt_patterns_sched',guis))
-#     cond_image_src=get_value('cond_image_src',guis)
-#     set_seed=get_value('set_seed',guis)
-#     clamp_grad=get_value('clamp_grad',guis)
-#     clamp_max=get_value('clamp_max',guis)
-#     sat_scale=get_value('sat_scale',guis)
-#     init_grad=get_value('init_grad',guis)
-#     grad_denoised=get_value('grad_denoised',guis)
-#     blend_latent_to_init=get_value('blend_latent_to_init',guis)
-#     fixed_code=get_value('fixed_code',guis)
-#     code_randomness=get_value('code_randomness',guis)
-#     # normalize_code=get_value('normalize_code',guis)
-#     dynamic_thresh=get_value('dynamic_thresh',guis)
-#     sampler = get_value('sampler',guis)
-#     use_karras_noise = get_value('use_karras_noise',guis)
-#     inpainting_mask_weight = get_value('inpainting_mask_weight',guis)
-#     inverse_inpainting_mask = get_value('inverse_inpainting_mask',guis)
-#     inpainting_mask_source = get_value('mask_source',guis)
+    #diffusion
+    text_prompts=eval(get_value('text_prompts',guis))
+    negative_prompts=eval(get_value('negative_prompts',guis))
+    prompt_patterns_sched = eval(get_value('prompt_patterns_sched',guis))
+    cond_image_src=get_value('cond_image_src',guis)
+    set_seed=get_value('set_seed',guis)
+    clamp_grad=get_value('clamp_grad',guis)
+    clamp_max=get_value('clamp_max',guis)
+    sat_scale=get_value('sat_scale',guis)
+    init_grad=get_value('init_grad',guis)
+    grad_denoised=get_value('grad_denoised',guis)
+    blend_latent_to_init=get_value('blend_latent_to_init',guis)
+    fixed_code=get_value('fixed_code',guis)
+    code_randomness=get_value('code_randomness',guis)
+    # normalize_code=get_value('normalize_code',guis)
+    dynamic_thresh=get_value('dynamic_thresh',guis)
+    sampler = get_value('sampler',guis)
+    use_karras_noise = get_value('use_karras_noise',guis)
+    inpainting_mask_weight = get_value('inpainting_mask_weight',guis)
+    inverse_inpainting_mask = get_value('inverse_inpainting_mask',guis)
+    inpainting_mask_source = get_value('mask_source',guis)
 
-#     #colormatch
-#     normalize_latent=get_value('normalize_latent',guis)
-#     normalize_latent_offset=get_value('normalize_latent_offset',guis)
-#     latent_fixed_mean=eval(str(get_value('latent_fixed_mean',guis)))
-#     latent_fixed_std=eval(str(get_value('latent_fixed_std',guis)))
-#     latent_norm_4d=get_value('latent_norm_4d',guis)
-#     colormatch_frame=get_value('colormatch_frame',guis)
-#     color_match_frame_str=get_value('color_match_frame_str',guis)
-#     colormatch_offset=get_value('colormatch_offset',guis)
-#     colormatch_method=get_value('colormatch_method',guis)
-#     colormatch_regrain=get_value('colormatch_regrain',guis)
-#     colormatch_after=get_value('colormatch_after',guis)
-#     image_prompts = {}
+    #colormatch
+    normalize_latent=get_value('normalize_latent',guis)
+    normalize_latent_offset=get_value('normalize_latent_offset',guis)
+    latent_fixed_mean=eval(str(get_value('latent_fixed_mean',guis)))
+    latent_fixed_std=eval(str(get_value('latent_fixed_std',guis)))
+    latent_norm_4d=get_value('latent_norm_4d',guis)
+    colormatch_frame=get_value('colormatch_frame',guis)
+    color_match_frame_str=get_value('color_match_frame_str',guis)
+    colormatch_offset=get_value('colormatch_offset',guis)
+    colormatch_method=get_value('colormatch_method',guis)
+    colormatch_regrain=get_value('colormatch_regrain',guis)
+    colormatch_after=get_value('colormatch_after',guis)
+    image_prompts = {}
 
-#     fixed_seed = get_value('fixed_seed',guis)
+    fixed_seed = get_value('fixed_seed',guis)
 
-#     #rec noise
-#     rec_cfg = get_value('rec_cfg',guis)
-#     rec_steps_pct = get_value('rec_steps_pct',guis)
-#     rec_prompts = eval(get_value('rec_prompts',guis))
-#     rec_randomness = get_value('rec_randomness',guis)
-#     use_predicted_noise = get_value('use_predicted_noise',guis)
-#     overwrite_rec_noise  = get_value('overwrite_rec_noise',guis)
+    #rec noise
+    rec_cfg = get_value('rec_cfg',guis)
+    rec_steps_pct = get_value('rec_steps_pct',guis)
+    rec_prompts = eval(get_value('rec_prompts',guis))
+    rec_randomness = get_value('rec_randomness',guis)
+    use_predicted_noise = get_value('use_predicted_noise',guis)
+    overwrite_rec_noise  = get_value('overwrite_rec_noise',guis)
 
-#     #controlnet
-#     save_controlnet_annotations = get_value('save_controlnet_annotations',guis)
-#     control_sd15_openpose_hands_face = get_value('control_sd15_openpose_hands_face',guis)
-#     control_sd15_depth_detector  = get_value('control_sd15_depth_detector',guis)
-#     control_sd15_softedge_detector = get_value('control_sd15_softedge_detector',guis)
-#     control_sd15_seg_detector = get_value('control_sd15_seg_detector',guis)
-#     control_sd15_scribble_detector = get_value('control_sd15_scribble_detector',guis)
-#     control_sd15_lineart_coarse = get_value('control_sd15_lineart_coarse',guis)
-#     control_sd15_inpaint_mask_source = get_value('control_sd15_inpaint_mask_source',guis)
-#     control_sd15_shuffle_source = get_value('control_sd15_shuffle_source',guis)
-#     control_sd15_shuffle_1st_source = get_value('control_sd15_shuffle_1st_source',guis)
-#     controlnet_multimodel = get_value('controlnet_multimodel',guis)
+    #controlnet
+    save_controlnet_annotations = get_value('save_controlnet_annotations',guis)
+    control_sd15_openpose_hands_face = get_value('control_sd15_openpose_hands_face',guis)
+    control_sd15_depth_detector  = get_value('control_sd15_depth_detector',guis)
+    control_sd15_softedge_detector = get_value('control_sd15_softedge_detector',guis)
+    control_sd15_seg_detector = get_value('control_sd15_seg_detector',guis)
+    control_sd15_scribble_detector = get_value('control_sd15_scribble_detector',guis)
+    control_sd15_lineart_coarse = get_value('control_sd15_lineart_coarse',guis)
+    control_sd15_inpaint_mask_source = get_value('control_sd15_inpaint_mask_source',guis)
+    control_sd15_shuffle_source = get_value('control_sd15_shuffle_source',guis)
+    control_sd15_shuffle_1st_source = get_value('control_sd15_shuffle_1st_source',guis)
+    controlnet_multimodel = get_value('controlnet_multimodel',guis)
 
-#     controlnet_preprocess = get_value('controlnet_preprocess',guis)
-#     detect_resolution  = get_value('detect_resolution',guis)
-#     bg_threshold = get_value('bg_threshold',guis)
-#     low_threshold = get_value('low_threshold',guis)
-#     high_threshold = get_value('high_threshold',guis)
-#     value_threshold = get_value('value_threshold',guis)
-#     distance_threshold = get_value('distance_threshold',guis)
-#     temporalnet_source = get_value('temporalnet_source',guis)
-#     temporalnet_skip_1st_frame = get_value('temporalnet_skip_1st_frame',guis)
-#     controlnet_multimodel_mode = get_value('controlnet_multimodel_mode',guis)
-#     max_faces = get_value('max_faces',guis)
+    controlnet_preprocess = get_value('controlnet_preprocess',guis)
+    detect_resolution  = get_value('detect_resolution',guis)
+    bg_threshold = get_value('bg_threshold',guis)
+    low_threshold = get_value('low_threshold',guis)
+    high_threshold = get_value('high_threshold',guis)
+    value_threshold = get_value('value_threshold',guis)
+    distance_threshold = get_value('distance_threshold',guis)
+    temporalnet_source = get_value('temporalnet_source',guis)
+    temporalnet_skip_1st_frame = get_value('temporalnet_skip_1st_frame',guis)
+    controlnet_multimodel_mode = get_value('controlnet_multimodel_mode',guis)
+    max_faces = get_value('max_faces',guis)
 
-#     do_softcap = get_value('do_softcap',guis)
-#     softcap_thresh = get_value('softcap_thresh',guis)
-#     softcap_q = get_value('softcap_q',guis)
+    do_softcap = get_value('do_softcap',guis)
+    softcap_thresh = get_value('softcap_thresh',guis)
+    softcap_q = get_value('softcap_q',guis)
 
-#     masked_guidance = get_value('masked_guidance',guis)
-#     cc_masked_diffusion = get_value('cc_masked_diffusion',guis)
-#     alpha_masked_diffusion = get_value('alpha_masked_diffusion',guis)
-#     invert_alpha_masked_diffusion = get_value('invert_alpha_masked_diffusion',guis)
+    masked_guidance = get_value('masked_guidance',guis)
+    cc_masked_diffusion = get_value('cc_masked_diffusion',guis)
+    alpha_masked_diffusion = get_value('alpha_masked_diffusion',guis)
+    invert_alpha_masked_diffusion = get_value('invert_alpha_masked_diffusion',guis)
 
-#     normalize_prompt_weights = get_value('normalize_prompt_weights',guis)
-#     sd_batch_size = get_value('sd_batch_size',guis)
-#     controlnet_low_vram = get_value('controlnet_low_vram',guis)
-#     mask_paths = eval(get_value('mask_paths',guis))
-#     deflicker_scale = get_value('deflicker_scale',guis)
-#     deflicker_latent_scale = get_value('deflicker_latent_scale',guis)
-#   except:
-#     print('Error keeping state')
-#     print(traceback.format_exc())
-#     pass
+    normalize_prompt_weights = get_value('normalize_prompt_weights',guis)
+    sd_batch_size = get_value('sd_batch_size',guis)
+    controlnet_low_vram = get_value('controlnet_low_vram',guis)
+    mask_paths = eval(get_value('mask_paths',guis))
+    deflicker_scale = get_value('deflicker_scale',guis)
+    deflicker_latent_scale = get_value('deflicker_latent_scale',guis)
+  except:
+    print('Error keeping state')
+    print(traceback.format_exc())
+    pass
 
 # gui_misc = {
 #     "user_comment": Textarea(value=user_comment,layout=Layout(width=f'80%'),  description = 'user_comment:',  description_tooltip = 'Enter a comment to differentiate between save files.'),
@@ -8565,108 +8565,108 @@ print('Loras/LyCos detected:\n','\n'.join(list(available_loras.keys())))
 # for i,title in enumerate(guis_titles_source):
 #     app.set_title(i, title)
 
-# def get_value(key, obj):
-#     if isinstance(obj, dict):
-#         if key in obj.keys():
-#             return obj[key].value
-#         else:
-#             for o in obj.keys():
-#                 res = get_value(key, obj[o])
-#                 if res is not None: return res
-#     if isinstance(obj, list):
-#         for o in obj:
-#             res = get_value(key, o)
-#             if res is not None: return res
-#     return None
+def get_value(key, obj):
+    if isinstance(obj, dict):
+        if key in obj.keys():
+            return obj[key].value
+        else:
+            for o in obj.keys():
+                res = get_value(key, obj[o])
+                if res is not None: return res
+    if isinstance(obj, list):
+        for o in obj:
+            res = get_value(key, o)
+            if res is not None: return res
+    return None
 
-# def set_value(key, value, obj):
-#     if isinstance(obj, dict):
-#         if key in obj.keys():
-#             obj[key].value = value
-#         else:
-#             for o in obj.keys():
-#                 set_value(key, value, obj[o])
+def set_value(key, value, obj):
+    if isinstance(obj, dict):
+        if key in obj.keys():
+            obj[key].value = value
+        else:
+            for o in obj.keys():
+                set_value(key, value, obj[o])
 
-#     if isinstance(obj, list):
-#         for o in obj:
-#             set_value(key, value, o)
+    if isinstance(obj, list):
+        for o in obj:
+            set_value(key, value, o)
 
 
 
-# import json
-# def infer_settings_path(path):
-#     default_settings_path = path
-#     if default_settings_path == '-1':
-#       settings_files = sorted(glob(os.path.join(settings_out, '*.txt')))
-#       if len(settings_files)>0:
-#         default_settings_path = settings_files[-1]
-#       else:
-#         print('Skipping load latest run settings: no settings files found.')
-#         return ''
-#     else:
-#       try:
-#         if type(eval(default_settings_path)) == int:
-#           files = sorted(glob(os.path.join(settings_out, '*.txt')))
-#           for f in files:
-#             if f'({default_settings_path})' in f:
-#               default_settings_path = f
-#       except: pass
+import json
+def infer_settings_path(path):
+    default_settings_path = path
+    if default_settings_path == '-1':
+      settings_files = sorted(glob(os.path.join(settings_out, '*.txt')))
+      if len(settings_files)>0:
+        default_settings_path = settings_files[-1]
+      else:
+        print('Skipping load latest run settings: no settings files found.')
+        return ''
+    else:
+      try:
+        if type(eval(default_settings_path)) == int:
+          files = sorted(glob(os.path.join(settings_out, '*.txt')))
+          for f in files:
+            if f'({default_settings_path})' in f:
+              default_settings_path = f
+      except: pass
 
-#     path = default_settings_path
-#     return path
+    path = default_settings_path
+    return path
 
-# def load_settings(path):
-#     path = infer_settings_path(path)
+def load_settings(path):
+    path = infer_settings_path(path)
 
-#     global guis, load_settings_path, output
-#     if not os.path.exists(path):
-#         output.clear_output()
-#         print('Please specify a valid path to a settings file.')
-#         return
-#     if path.endswith('png'):
-#       img = PIL.Image.open(path)
-#       exif_data = img._getexif()
-#       settings = json.loads(exif_data[37510])
+    global guis, load_settings_path, output
+    if not os.path.exists(path):
+        output.clear_output()
+        print('Please specify a valid path to a settings file.')
+        return
+    if path.endswith('png'):
+      img = PIL.Image.open(path)
+      exif_data = img._getexif()
+      settings = json.loads(exif_data[37510])
 
-#     else:
-#       print('Loading settings from: ', path)
-#       with open(path, 'rb') as f:
-#           settings = json.load(f)
+    else:
+      print('Loading settings from: ', path)
+      with open(path, 'rb') as f:
+          settings = json.load(f)
 
-#     for key in settings:
-#         try:
-#             val = settings[key]
-#             if key == 'normalize_latent' and val == 'first_latent':
-#               val = 'init_frame'
-#               settings['normalize_latent_offset'] = 0
-#             if key == 'turbo_frame_skips_steps' and val == None:
-#                 val = '100% (don`t diffuse turbo frames, fastest)'
-#             if key == 'seed':
-#                 key = 'set_seed'
-#             if key == 'grad_denoised ':
-#                 key = 'grad_denoised'
-#             if type(val) in [dict,list]:
-#                 if type(val) in [dict]:
-#                   temp = {}
-#                   for k in val.keys():
-#                     temp[int(k)] = val[k]
-#                   val = temp
-#                 val = json.dumps(val)
-#             if key == 'mask_clip':
-#               val = eval(val)
-#             if key == 'sampler':
-#               val = getattr(K.sampling, val)
-#             if key == 'controlnet_multimodel':
-#               val = val.replace('control_sd15_hed', 'control_sd15_softedge')
-#               val = json.loads(val)
-#             # print(key, val)
-#             set_value(key, val, guis)
-#             # print(get_value(key, guis))
-#         except Exception as e:
-#             print(key), print(settings[key] )
-#             print(e)
-#     # output.clear_output()
-#     print('Successfully loaded settings from ', path )
+    for key in settings:
+        try:
+            val = settings[key]
+            if key == 'normalize_latent' and val == 'first_latent':
+              val = 'init_frame'
+              settings['normalize_latent_offset'] = 0
+            if key == 'turbo_frame_skips_steps' and val == None:
+                val = '100% (don`t diffuse turbo frames, fastest)'
+            if key == 'seed':
+                key = 'set_seed'
+            if key == 'grad_denoised ':
+                key = 'grad_denoised'
+            if type(val) in [dict,list]:
+                if type(val) in [dict]:
+                  temp = {}
+                  for k in val.keys():
+                    temp[int(k)] = val[k]
+                  val = temp
+                val = json.dumps(val)
+            if key == 'mask_clip':
+              val = eval(val)
+            if key == 'sampler':
+              val = getattr(K.sampling, val)
+            if key == 'controlnet_multimodel':
+              val = val.replace('control_sd15_hed', 'control_sd15_softedge')
+              val = json.loads(val)
+            # print(key, val)
+            set_value(key, val, guis)
+            # print(get_value(key, guis))
+        except Exception as e:
+            print(key), print(settings[key] )
+            print(e)
+    # output.clear_output()
+    print('Successfully loaded settings from ', path )
 
 # def dump_gui():
 #   print('smth changed', time.time())
