@@ -8671,7 +8671,7 @@ def load_settings(path):
 def dump_gui():
   print('smth changed', time.time())
 
-output = Output()
+# output = Output()
 if settings_path != '' and load_settings_from_file:
   print("entered here loading settings", settings_path)
   load_settings(settings_path)
