@@ -8080,7 +8080,7 @@ def get_value(key, obj):
     return None
 
 # #try keep settings on occasional run cell
-if keep_gui_state_on_cell_rerun:
+if False:#keep_gui_state_on_cell_rerun:
   try:
 
     latent_scale_schedule=eval(get_value('latent_scale_schedule',guis))
