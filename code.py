@@ -8065,6 +8065,20 @@ def set_visibility(key, value, obj):
           obj[key].layout.visibility = value
 
 
+def get_value(key, obj):
+    if isinstance(obj, dict):
+        if key in obj.keys():
+            return obj[key].value
+        else:
+            for o in obj.keys():
+                res = get_value(key, obj[o])
+                if res is not None: return res
+    if isinstance(obj, list):
+        for o in obj:
+            res = get_value(key, o)
+            if res is not None: return res
+    return None
+
 # #try keep settings on occasional run cell
 if keep_gui_state_on_cell_rerun:
   try:
@@ -8564,20 +8578,6 @@ if keep_gui_state_on_cell_rerun:
 # app = Tab(guis_labels)
 # for i,title in enumerate(guis_titles_source):
 #     app.set_title(i, title)
-
-def get_value(key, obj):
-    if isinstance(obj, dict):
-        if key in obj.keys():
-            return obj[key].value
-        else:
-            for o in obj.keys():
-                res = get_value(key, obj[o])
-                if res is not None: return res
-    if isinstance(obj, list):
-        for o in obj:
-            res = get_value(key, o)
-            if res is not None: return res
-    return None
 
 def set_value(key, value, obj):
     if isinstance(obj, dict):
