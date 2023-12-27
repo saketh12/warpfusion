@@ -8615,6 +8615,7 @@ def infer_settings_path(path):
     path = default_settings_path
     return path
 
+guis = None
 def load_settings(path):
     path = infer_settings_path(path)
 
@@ -8859,6 +8860,7 @@ if mask_paths != []:
 
 from glob import glob
 controlnet_multimodel = get_value('controlnet_multimodel',guis)
+print("controlnet multimodel", controlnet_multimodel, guis)
 image_prompts = {}
 controlnet_multimodel_temp = {}
 for key in controlnet_multimodel.keys():
