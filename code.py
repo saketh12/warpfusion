@@ -8280,7 +8280,7 @@ gui_mask = {
     "background_source": background_source,  # Assuming background_source is a string
     "apply_mask_after_warp": apply_mask_after_warp,  # Assuming apply_mask_after_warp is a boolean
     "mask_clip": mask_clip,  # Assuming mask_clip is a tuple (low, high), e.g., (0, 255)
-    "mask_paths": mask_paths,  # Assuming mask_paths is a string or a list of strings
+    "mask_paths": str(mask_paths),  # Assuming mask_paths is a string or a list of strings
 }
 
 
@@ -8298,7 +8298,7 @@ gui_turbo = {
     "turbo_mode": turbo_mode,  # Assuming turbo_mode is a boolean
     "turbo_steps": turbo_steps,  # Assuming turbo_steps is an integer
     "colormatch_turbo": colormatch_turbo,  # Assuming colormatch_turbo is a boolean
-    "turbo_frame_skips_steps": turbo_frame_skips_steps,  # Assuming turbo_frame_skips_steps is a string from the options ['70%', '75%', '80%', '85%', '90%', '95%', '100% (don`t diffuse turbo frames, fastest)']
+    "turbo_frame_skips_steps": '100% (don`t diffuse turbo frames, fastest)',  # Assuming turbo_frame_skips_steps is a string from the options ['70%', '75%', '80%', '85%', '90%', '95%', '100% (don`t diffuse turbo frames, fastest)']
     "soften_consistency_mask_for_turbo_frames": soften_consistency_mask_for_turbo_frames,  # Assuming soften_consistency_mask_for_turbo_frames is a float
 }
 
@@ -8323,11 +8323,11 @@ gui_turbo = {
 
 gui_warp = {
     "flow_warp": flow_warp,  # Assuming flow_warp is a boolean
-    "flow_blend_schedule": flow_blend_schedule,  # Assuming flow_blend_schedule is a string or a serialized structure
+    "flow_blend_schedule": str(flow_blend_schedule),  # Assuming flow_blend_schedule is a string or a serialized structure
     "warp_num_k": warp_num_k,  # Assuming warp_num_k is an integer
     "warp_forward": warp_forward,  # Assuming warp_forward is a boolean
     "warp_strength": warp_strength,  # Assuming warp_strength is a float
-    "flow_override_map": flow_override_map,  # Assuming flow_override_map is a string or a serialized structure
+    "flow_override_map": str(flow_override_map),  # Assuming flow_override_map is a string or a serialized structure
     "warp_mode": warp_mode,  # Assuming warp_mode is a string from the options ['use_latent', 'use_image']
     "warp_towards_init": warp_towards_init,  # Assuming warp_towards_init is a string from the options ['stylized', 'off']
     "padding_ratio": padding_ratio,  # Assuming padding_ratio is a float
@@ -8440,9 +8440,9 @@ gui_consistency = {
 gui_diffusion = {
     "use_karras_noise": use_karras_noise,  # Assuming use_karras_noise is a boolean
     "sampler": sampler,  # Assuming sampler is a string or relevant identifier
-    "prompt_patterns_sched": prompt_patterns_sched,  # Assuming prompt_patterns_sched is a string
-    "text_prompts": text_prompts,  # Assuming text_prompts is a string
-    "negative_prompts": negative_prompts,  # Assuming negative_prompts is a string
+    "prompt_patterns_sched": str(prompt_patterns_sched),  # Assuming prompt_patterns_sched is a string
+    "text_prompts": str(text_prompts),  # Assuming text_prompts is a string
+    "negative_prompts": str(negative_prompts),  # Assuming negative_prompts is a string
     "cond_image_src": cond_image_src,  # Assuming cond_image_src is a string
     "inpainting_mask_source": inpainting_mask_source,  # Assuming inpainting_mask_source is a string
     "inverse_inpainting_mask": inverse_inpainting_mask,  # Assuming inverse_inpainting_mask is a boolean
@@ -8450,22 +8450,22 @@ gui_diffusion = {
     "set_seed": set_seed,  # Assuming set_seed is an integer
     "clamp_grad": clamp_grad,  # Assuming clamp_grad is a boolean
     "clamp_max": clamp_max,  # Assuming clamp_max is a float
-    "latent_scale_schedule": latent_scale_schedule,  # Assuming latent_scale_schedule is a string
-    "init_scale_schedule": init_scale_schedule,  # Assuming init_scale_schedule is a string
+    "latent_scale_schedule": str(latent_scale_schedule),  # Assuming latent_scale_schedule is a string
+    "init_scale_schedule": str(init_scale_schedule),  # Assuming init_scale_schedule is a string
     "sat_scale": sat_scale,  # Assuming sat_scale is a float
     "init_grad": init_grad,  # Assuming init_grad is a boolean
     "grad_denoised": grad_denoised,  # Assuming grad_denoised is a boolean
-    "steps_schedule": steps_schedule,  # Assuming steps_schedule is a string
-    "style_strength_schedule": style_strength_schedule,  # Assuming style_strength_schedule is a string
-    "cfg_scale_schedule": cfg_scale_schedule,  # Assuming cfg_scale_schedule is a string
-    "image_scale_schedule": image_scale_schedule,  # Assuming image_scale_schedule is a string
+    "steps_schedule": str(steps_schedule),  # Assuming steps_schedule is a string
+    "style_strength_schedule": str(style_strength_schedule),  # Assuming style_strength_schedule is a string
+    "cfg_scale_schedule": str(cfg_scale_schedule),  # Assuming cfg_scale_schedule is a string
+    "image_scale_schedule": str(image_scale_schedule),  # Assuming image_scale_schedule is a string
     "blend_latent_to_init": blend_latent_to_init,  # Assuming blend_latent_to_init is a float
     "fixed_seed": fixed_seed,  # Assuming fixed_seed is a boolean
     "fixed_code": fixed_code,  # Assuming fixed_code is a boolean
     "code_randomness": code_randomness,  # Assuming code_randomness is a float
     "dynamic_thresh": dynamic_thresh,  # Assuming dynamic_thresh is a float
     "use_predicted_noise": use_predicted_noise,  # Assuming use_predicted_noise is a boolean
-    "rec_prompts": rec_prompts,  # Assuming rec_prompts is a string
+    "rec_prompts": str(rec_prompts),  # Assuming rec_prompts is a string
     "rec_randomness": rec_randomness,  # Assuming rec_randomness is a float
     "rec_cfg": rec_cfg,  # Assuming rec_cfg is a float
     "rec_source": rec_source,  # Assuming rec_source is a string
