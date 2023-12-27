@@ -8759,7 +8759,7 @@ def infer_settings_path(path):
     path = default_settings_path
     return path
 
-guis = None
+# guis = None
 def load_settings(path):
     path = infer_settings_path(path)
 
