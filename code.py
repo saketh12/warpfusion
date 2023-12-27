@@ -8236,6 +8236,17 @@ if False:#keep_gui_state_on_cell_rerun:
 #     "sd_batch_size":IntText(value = sd_batch_size, description='sd_batch_size:', description_tooltip='Diffusion batch size. Default=2 for 1 positive + 1 negative prompt. '),
 
 # }
+gui_misc = {
+    "user_comment": user_comment,  # Assuming user_comment is a string
+    "blend_json_schedules": blend_json_schedules,  # Assuming blend_json_schedules is a boolean
+    "VERBOSE": VERBOSE,  # Assuming VERBOSE is a boolean
+    "offload_model": offload_model,  # Assuming offload_model is a boolean
+    "do_softcap": do_softcap,  # Assuming do_softcap is a boolean
+    "softcap_thresh": softcap_thresh,  # Assuming softcap_thresh is a float
+    "softcap_q": softcap_q,  # Assuming softcap_q is a float
+    "sd_batch_size": sd_batch_size,  # Assuming sd_batch_size is an integer
+}
+
 
 # gui_mask = {
 #     "use_background_mask":Checkbox(value=use_background_mask,description='use_background_mask',indent=True, description_tooltip='Enable masking. In order to use it, you have to either extract or provide an existing mask in Video Masking cell.\n'),
@@ -8261,6 +8272,17 @@ if False:#keep_gui_state_on_cell_rerun:
 
 # }
 
+gui_mask = {
+    "use_background_mask": use_background_mask,  # Assuming use_background_mask is a boolean
+    "invert_mask": invert_mask,  # Assuming invert_mask is a boolean
+    "background": background,  # Assuming background is a string from the options ['image', 'color', 'init_video']
+    "background_source": background_source,  # Assuming background_source is a string
+    "apply_mask_after_warp": apply_mask_after_warp,  # Assuming apply_mask_after_warp is a boolean
+    "mask_clip": mask_clip,  # Assuming mask_clip is a tuple (low, high), e.g., (0, 255)
+    "mask_paths": mask_paths,  # Assuming mask_paths is a string or a list of strings
+}
+
+
 # gui_turbo = {
 #     "turbo_mode":Checkbox(value=turbo_mode,description='turbo_mode',indent=True, description_tooltip='Turbo mode skips diffusion process on turbo_steps number of frames. Frames are still being warped and blended. Speeds up the render at the cost of possible trails an ghosting.' ),
 #     "turbo_steps": IntText(value = turbo_steps, description='turbo_steps:', description_tooltip='Number of turbo frames'),
@@ -8270,6 +8292,15 @@ if False:#keep_gui_state_on_cell_rerun:
 #     "soften_consistency_mask_for_turbo_frames": FloatSlider(value=soften_consistency_mask_for_turbo_frames, min=0, max=1, step=0.05, description='soften_consistency_mask_for_turbo_frames:', readout=True, readout_format='.1f', description_tooltip='Clips the consistency mask, reducing it`s effect'),
 
 # }
+
+gui_turbo = {
+    "turbo_mode": turbo_mode,  # Assuming turbo_mode is a boolean
+    "turbo_steps": turbo_steps,  # Assuming turbo_steps is an integer
+    "colormatch_turbo": colormatch_turbo,  # Assuming colormatch_turbo is a boolean
+    "turbo_frame_skips_steps": turbo_frame_skips_steps,  # Assuming turbo_frame_skips_steps is a string from the options ['70%', '75%', '80%', '85%', '90%', '95%', '100% (don`t diffuse turbo frames, fastest)']
+    "soften_consistency_mask_for_turbo_frames": soften_consistency_mask_for_turbo_frames,  # Assuming soften_consistency_mask_for_turbo_frames is a float
+}
+
 
 # gui_warp = {
 #     "flow_warp":Checkbox(value=flow_warp,description='flow_warp',indent=True, description_tooltip='Blend current raw init video frame with previously stylised frame with respect to consistency mask. 0 - raw frame, 1 - stylized frame'),
@@ -8289,6 +8320,20 @@ if False:#keep_gui_state_on_cell_rerun:
 #                              value = padding_mode),
 # }
 
+gui_warp = {
+    "flow_warp": flow_warp,  # Assuming flow_warp is a boolean
+    "flow_blend_schedule": flow_blend_schedule,  # Assuming flow_blend_schedule is a string or a serialized structure
+    "warp_num_k": warp_num_k,  # Assuming warp_num_k is an integer
+    "warp_forward": warp_forward,  # Assuming warp_forward is a boolean
+    "warp_strength": warp_strength,  # Assuming warp_strength is a float
+    "flow_override_map": flow_override_map,  # Assuming flow_override_map is a string or a serialized structure
+    "warp_mode": warp_mode,  # Assuming warp_mode is a string from the options ['use_latent', 'use_image']
+    "warp_towards_init": warp_towards_init,  # Assuming warp_towards_init is a string from the options ['stylized', 'off']
+    "padding_ratio": padding_ratio,  # Assuming padding_ratio is a float
+    "padding_mode": padding_mode,  # Assuming padding_mode is a string from the options ['reflect', 'edge', 'wrap']
+}
+
+
 # # warp_interp = Image.LANCZOS
 
 # gui_consistency = {
@@ -8304,6 +8349,20 @@ if False:#keep_gui_state_on_cell_rerun:
 #     "mask_result": Checkbox(value=mask_result,description='mask_result',indent=True, description_tooltip='Stylizes only inconsistent areas. Takes consistent areas from the previous frame.'),
 #     "use_patchmatch_inpaiting": FloatSlider(value=use_patchmatch_inpaiting, min=0, max=1, step=0.05, description='use_patchmatch_inpaiting:', readout=True, readout_format='.1f', description_tooltip='Uses patchmatch inapinting for inconsistent areas. Is slow.'),
 # }
+
+gui_consistency = {
+    "check_consistency": check_consistency,  # Assuming check_consistency is a boolean
+    "missed_consistency_weight": missed_consistency_weight,  # Assuming missed_consistency_weight is a float
+    "overshoot_consistency_weight": overshoot_consistency_weight,  # Assuming overshoot_consistency_weight is a float
+    "edges_consistency_weight": edges_consistency_weight,  # Assuming edges_consistency_weight is a float
+    "soften_consistency_mask": soften_consistency_mask,  # Assuming soften_consistency_mask is a float
+    "consistency_blur": consistency_blur,  # Assuming consistency_blur is a float
+    "consistency_dilate": consistency_dilate,  # Assuming consistency_dilate is a float
+    "match_color_strength": match_color_strength,  # Assuming match_color_strength is a float
+    "mask_result": mask_result,  # Assuming mask_result is a boolean
+    "use_patchmatch_inpaiting": use_patchmatch_inpaiting,  # Assuming use_patchmatch_inpaiting is a float
+}
+
 
 # gui_diffusion = {
 #     "use_karras_noise":Checkbox(value=use_karras_noise,description='use_karras_noise',indent=True, description_tooltip='Enable for samplers that have K at their name`s end.'),
@@ -8375,9 +8434,53 @@ if False:#keep_gui_state_on_cell_rerun:
 #     "deflicker_latent_scale": FloatText(value = deflicker_latent_scale,
 #                                         description='deflicker_latent_scale:', description_tooltip= 'Deflicker loss scale in image latent space'),
 
-
-
 # }
+
+gui_diffusion = {
+    "use_karras_noise": use_karras_noise,  # Assuming use_karras_noise is a boolean
+    "sampler": sampler,  # Assuming sampler is a string or relevant identifier
+    "prompt_patterns_sched": prompt_patterns_sched,  # Assuming prompt_patterns_sched is a string
+    "text_prompts": text_prompts,  # Assuming text_prompts is a string
+    "negative_prompts": negative_prompts,  # Assuming negative_prompts is a string
+    "cond_image_src": cond_image_src,  # Assuming cond_image_src is a string
+    "inpainting_mask_source": inpainting_mask_source,  # Assuming inpainting_mask_source is a string
+    "inverse_inpainting_mask": inverse_inpainting_mask,  # Assuming inverse_inpainting_mask is a boolean
+    "inpainting_mask_weight": inpainting_mask_weight,  # Assuming inpainting_mask_weight is a float
+    "set_seed": set_seed,  # Assuming set_seed is an integer
+    "clamp_grad": clamp_grad,  # Assuming clamp_grad is a boolean
+    "clamp_max": clamp_max,  # Assuming clamp_max is a float
+    "latent_scale_schedule": latent_scale_schedule,  # Assuming latent_scale_schedule is a string
+    "init_scale_schedule": init_scale_schedule,  # Assuming init_scale_schedule is a string
+    "sat_scale": sat_scale,  # Assuming sat_scale is a float
+    "init_grad": init_grad,  # Assuming init_grad is a boolean
+    "grad_denoised": grad_denoised,  # Assuming grad_denoised is a boolean
+    "steps_schedule": steps_schedule,  # Assuming steps_schedule is a string
+    "style_strength_schedule": style_strength_schedule,  # Assuming style_strength_schedule is a string
+    "cfg_scale_schedule": cfg_scale_schedule,  # Assuming cfg_scale_schedule is a string
+    "image_scale_schedule": image_scale_schedule,  # Assuming image_scale_schedule is a string
+    "blend_latent_to_init": blend_latent_to_init,  # Assuming blend_latent_to_init is a float
+    "fixed_seed": fixed_seed,  # Assuming fixed_seed is a boolean
+    "fixed_code": fixed_code,  # Assuming fixed_code is a boolean
+    "code_randomness": code_randomness,  # Assuming code_randomness is a float
+    "dynamic_thresh": dynamic_thresh,  # Assuming dynamic_thresh is a float
+    "use_predicted_noise": use_predicted_noise,  # Assuming use_predicted_noise is a boolean
+    "rec_prompts": rec_prompts,  # Assuming rec_prompts is a string
+    "rec_randomness": rec_randomness,  # Assuming rec_randomness is a float
+    "rec_cfg": rec_cfg,  # Assuming rec_cfg is a float
+    "rec_source": rec_source,  # Assuming rec_source is a string
+    "rec_steps_pct": rec_steps_pct,  # Assuming rec_steps_pct is a float
+    "overwrite_rec_noise": overwrite_rec_noise,  # Assuming overwrite_rec_noise is a boolean
+    "masked_guidance": masked_guidance,  # Assuming masked_guidance is a boolean
+    "cc_masked_diffusion": cc_masked_diffusion,  # Assuming cc_masked_diffusion is a float
+    "alpha_masked_diffusion": alpha_masked_diffusion,  # Assuming alpha_masked_diffusion is a float
+    "invert_alpha_masked_diffusion": invert_alpha_masked_diffusion,  # Assuming invert_alpha_masked_diffusion is a boolean
+    "normalize_prompt_weights": normalize_prompt_weights,  # Assuming normalize_prompt_weights is a boolean
+    "deflicker_scale": deflicker_scale,  # Assuming deflicker_scale is a float
+    "deflicker_latent_scale": deflicker_latent_scale,  # Assuming deflicker_latent_scale is a float
+}
+
+
+
 # gui_colormatch = {
 #     "normalize_latent": Dropdown(description='normalize_latent',
 #                                  options = ['off', 'user_defined', 'color_video', 'color_video_offset',
@@ -8396,6 +8499,20 @@ if False:#keep_gui_state_on_cell_rerun:
 #     "colormatch_after":Checkbox(value=colormatch_after,description='colormatch_after',indent=True, description_tooltip= 'On - Colormatch output frames when saving to disk, may differ from the preview. Off - colormatch before stylizing.'),
 
 # }
+
+gui_colormatch = {
+    "normalize_latent": normalize_latent,  # Assuming normalize_latent is a string
+    "normalize_latent_offset": normalize_latent_offset,  # Assuming normalize_latent_offset is an integer
+    "latent_fixed_mean": latent_fixed_mean,  # Assuming latent_fixed_mean is a float
+    "latent_fixed_std": latent_fixed_std,  # Assuming latent_fixed_std is a float
+    "latent_norm_4d": latent_norm_4d,  # Assuming latent_norm_4d is a boolean
+    "colormatch_frame": colormatch_frame,  # Assuming colormatch_frame is a string
+    "color_match_frame_str": color_match_frame_str,  # Assuming color_match_frame_str is a float
+    "colormatch_offset": colormatch_offset,  # Assuming colormatch_offset is an integer
+    "colormatch_method": colormatch_method,  # Assuming colormatch_method is a string
+    "colormatch_after": colormatch_after,  # Assuming colormatch_after is a boolean
+}
+
 
 # gui_controlnet = {
 #     "controlnet_preprocess": Checkbox(value=controlnet_preprocess,description='controlnet_preprocess',indent=True,
@@ -8438,13 +8555,40 @@ if False:#keep_gui_state_on_cell_rerun:
 
 # }
 
-# colormatch_regrain = False
+gui_controlnet = {
+    "controlnet_preprocess": controlnet_preprocess,  # Assuming controlnet_preprocess is a boolean
+    "detect_resolution": detect_resolution,  # Assuming detect_resolution is an integer
+    "bg_threshold": bg_threshold,  # Assuming bg_threshold is a float
+    "low_threshold": low_threshold,  # Assuming low_threshold is an integer
+    "high_threshold": high_threshold,  # Assuming high_threshold is an integer
+    "value_threshold": value_threshold,  # Assuming value_threshold is a float
+    "distance_threshold": distance_threshold,  # Assuming distance_threshold is a float
+    "temporalnet_source": temporalnet_source,  # Assuming temporalnet_source is a string
+    "temporalnet_skip_1st_frame": temporalnet_skip_1st_frame,  # Assuming temporalnet_skip_1st_frame is a boolean
+    "controlnet_multimodel_mode": controlnet_multimodel_mode,  # Assuming controlnet_multimodel_mode is a string
+    "max_faces": max_faces,  # Assuming max_faces is an integer
+    "controlnet_low_vram": controlnet_low_vram,  # Assuming controlnet_low_vram is a boolean
+    "save_controlnet_annotations": save_controlnet_annotations,  # Assuming save_controlnet_annotations is a boolean
+    "control_sd15_openpose_hands_face": control_sd15_openpose_hands_face,  # Assuming control_sd15_openpose_hands_face is a boolean
+    "control_sd15_depth_detector": control_sd15_depth_detector,  # Assuming control_sd15_depth_detector is a string
+    "control_sd15_softedge_detector": control_sd15_softedge_detector,  # Assuming control_sd15_softedge_detector is a string
+    "control_sd15_seg_detector": control_sd15_seg_detector,  # Assuming control_sd15_seg_detector is a string
+    "control_sd15_scribble_detector": control_sd15_scribble_detector,  # Assuming control_sd15_scribble_detector is a string
+    "control_sd15_lineart_coarse": control_sd15_lineart_coarse,  # Assuming control_sd15_lineart_coarse is a boolean
+    "control_sd15_inpaint_mask_source": control_sd15_inpaint_mask_source,  # Assuming control_sd15_inpaint_mask_source is a string
+    "control_sd15_shuffle_source": control_sd15_shuffle_source,  # Assuming control_sd15_shuffle_source is a string
+    "control_sd15_shuffle_1st_source": control_sd15_shuffle_1st_source,  # Assuming control_sd15_shuffle_1st_source is a string
+    "controlnet_multimodel": controlnet_multimodel  # Assuming controlnet_multimodel is an object or value representing the control model
+}
 
-# guis = [gui_diffusion, gui_controlnet, gui_warp, gui_consistency, gui_turbo, gui_mask, gui_colormatch, gui_misc]
 
-# for key in gui_difficulty_dict[gui_difficulty]:
-#   for gui in guis:
-#     set_visibility(key, 'hidden', gui)
+colormatch_regrain = False
+
+guis = [gui_diffusion, gui_controlnet, gui_warp, gui_consistency, gui_turbo, gui_mask, gui_colormatch, gui_misc]
+
+for key in gui_difficulty_dict[gui_difficulty]:
+  for gui in guis:
+    set_visibility(key, 'hidden', gui)
 
 # class FilePath(HBox):
 #     def __init__(self,  **kwargs):
@@ -9116,13 +9260,13 @@ background_source=get_value('background_source',guis)
 #turbo
 turbo_mode=get_value('turbo_mode',guis)
 turbo_steps=get_value('turbo_steps',guis)
-colormatch_turbo=get_value('colormatch_turbo',guis)
+# colormatch_turbo=get_value('colormatch_turbo',guis)
 turbo_frame_skips_steps=get_value('turbo_frame_skips_steps',guis)
-soften_consistency_mask_for_turbo_frames=get_value('soften_consistency_mask_for_turbo_frames',guis)
+# soften_consistency_mask_for_turbo_frames=get_value('soften_consistency_mask_for_turbo_frames',guis)
 
 #warp
 flow_warp= get_value('flow_warp',guis)
-apply_mask_after_warp=get_value('apply_mask_after_warp',guis)
+# apply_mask_after_warp=get_value('apply_mask_after_warp',guis)
 warp_num_k=get_value('warp_num_k',guis)
 warp_forward=get_value('warp_forward',guis)
 warp_strength=get_value('warp_strength',guis)
@@ -9211,22 +9355,22 @@ distance_threshold = get_value('distance_threshold',guis)
 temporalnet_source = get_value('temporalnet_source',guis)
 temporalnet_skip_1st_frame = get_value('temporalnet_skip_1st_frame',guis)
 controlnet_multimodel_mode = get_value('controlnet_multimodel_mode',guis)
-max_faces = get_value('max_faces',guis)
+# max_faces = get_value('max_faces',guis)
 
-do_softcap = get_value('do_softcap',guis)
-softcap_thresh = get_value('softcap_thresh',guis)
-softcap_q = get_value('softcap_q',guis)
+# do_softcap = get_value('do_softcap',guis)
+# softcap_thresh = get_value('softcap_thresh',guis)
+# softcap_q = get_value('softcap_q',guis)
 
-masked_guidance = get_value('masked_guidance',guis)
-cc_masked_diffusion = get_value('cc_masked_diffusion',guis)
-alpha_masked_diffusion = get_value('alpha_masked_diffusion',guis)
+# masked_guidance = get_value('masked_guidance',guis)
+# cc_masked_diffusion = get_value('cc_masked_diffusion',guis)
+# alpha_masked_diffusion = get_value('alpha_masked_diffusion',guis)
 
-normalize_prompt_weights = get_value('normalize_prompt_weights',guis)
-sd_batch_size = get_value('sd_batch_size',guis)
-controlnet_low_vram = get_value('controlnet_low_vram',guis)
-mask_paths = eval(get_value('mask_paths',guis))
-deflicker_scale = get_value('deflicker_scale',guis)
-deflicker_latent_scale = get_value('deflicker_latent_scale',guis)
+# normalize_prompt_weights = get_value('normalize_prompt_weights',guis)
+# sd_batch_size = get_value('sd_batch_size',guis)
+# controlnet_low_vram = get_value('controlnet_low_vram',guis)
+# mask_paths = eval(get_value('mask_paths',guis))
+# deflicker_scale = get_value('deflicker_scale',guis)
+# deflicker_latent_scale = get_value('deflicker_latent_scale',guis)
 
 if turbo_frame_skips_steps == '100% (don`t diffuse turbo frames, fastest)':
   turbo_frame_skips_steps = None
@@ -9247,7 +9391,7 @@ intermediates_in_subfolder = True
 steps_per_checkpoint = None
 
 forward_weights_clip = soften_consistency_mask
-forward_weights_clip_turbo_step = soften_consistency_mask_for_turbo_frames
+# forward_weights_clip_turbo_step = soften_consistency_mask_for_turbo_frames
 inpaint_blend = 0
 
 if animation_mode == 'Video Input':
