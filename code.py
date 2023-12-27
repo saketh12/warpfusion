@@ -1,4 +1,4 @@
-print("here!!!!")
+print("here!!!!", flush=True)
 
 
 #@title 1.1 Prepare Folders
@@ -9004,7 +9004,7 @@ if mask_paths != []:
 
 from glob import glob
 controlnet_multimodel = get_value('controlnet_multimodel',guis)
-print("controlnet multimodel", controlnet_multimodel, guis)
+print("this should work", flush=True)
 image_prompts = {}
 controlnet_multimodel_temp = {}
 for key in controlnet_multimodel.keys():
@@ -9061,7 +9061,7 @@ if model_version == 'control_multi':
       #         except: pass
       #         wget.download(helper_model_url, helper_model_path)
 
-  print('Loading ControlNet Models')
+  print('Loading ControlNet Models', flush=True)
   loaded_controlnets = {}
   for controlnet in controlnet_multimodel.keys():
     controlnet_settings = controlnet_multimodel[controlnet]
