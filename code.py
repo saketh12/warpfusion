@@ -8586,9 +8586,9 @@ colormatch_regrain = False
 
 guis = [gui_diffusion, gui_controlnet, gui_warp, gui_consistency, gui_turbo, gui_mask, gui_colormatch, gui_misc]
 
-for key in gui_difficulty_dict[gui_difficulty]:
-  for gui in guis:
-    set_visibility(key, 'hidden', gui)
+# for key in gui_difficulty_dict[gui_difficulty]:
+#   for gui in guis:
+#     set_visibility(key, 'hidden', gui)
 
 # class FilePath(HBox):
 #     def __init__(self,  **kwargs):
