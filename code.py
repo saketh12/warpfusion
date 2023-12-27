@@ -1,4 +1,4 @@
-print("here!!!!", flush=True)
+print("here!!!!")
 
 
 #@title 1.1 Prepare Folders
@@ -8068,7 +8068,7 @@ def set_visibility(key, value, obj):
 def get_value(key, obj):
     if isinstance(obj, dict):
         if key in obj.keys():
-            return obj[key].value
+            return obj[key]#.value
         else:
             for o in obj.keys():
                 res = get_value(key, obj[o])
@@ -9004,7 +9004,7 @@ if mask_paths != []:
 
 from glob import glob
 controlnet_multimodel = get_value('controlnet_multimodel',guis)
-print("this should work", flush=True)
+print("controlnet multimodel", controlnet_multimodel, guis)
 image_prompts = {}
 controlnet_multimodel_temp = {}
 for key in controlnet_multimodel.keys():
@@ -9061,7 +9061,7 @@ if model_version == 'control_multi':
       #         except: pass
       #         wget.download(helper_model_url, helper_model_path)
 
-  print('Loading ControlNet Models', flush=True)
+  print('Loading ControlNet Models')
   loaded_controlnets = {}
   for controlnet in controlnet_multimodel.keys():
     controlnet_settings = controlnet_multimodel[controlnet]
