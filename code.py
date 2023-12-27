@@ -8618,9 +8618,9 @@ def infer_settings_path(path):
 def load_settings(path):
     path = infer_settings_path(path)
 
-    global guis, load_settings_path, output
+    global guis, load_settings_path#, output
     if not os.path.exists(path):
-        output.clear_output()
+        # output.clear_output()
         print('Please specify a valid path to a settings file.')
         return
     if path.endswith('png'):
