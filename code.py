@@ -3593,6 +3593,7 @@ def extractFrames(video_path, output_path, nth_frame, start_frame, end_frame):
         subprocess.run(['ffmpeg.exe', '-i', f'{video_path}', '-vf', f'{vf}', '-vsync', 'vfr', '-q:v', '2', '-loglevel', 'error', '-stats', f'{output_path}/%06d.jpg'], stdout=subprocess.PIPE).stdout.decode('utf-8')
 
   else:
+    print("exiting 3333333")
     sys.exit(f'\nERROR!\n\nVideo not found: {video_path}.\nPlease check your video path.\n')
 
 if animation_mode == 'Video Input':
@@ -9105,6 +9106,7 @@ if model_version == 'control_multi':
               print(u, len(u))
       else:
         print('Small controlnet model not found in path but specified in settings. Please adjust settings or check controlnet path.')
+        print("sys exittttt 444444444")
         sys.exit(0)
 
 
@@ -9221,7 +9223,9 @@ cfg_scale_schedule_bkup = copy.copy(cfg_scale_schedule)
 image_scale_schedule_bkup = copy.copy(image_scale_schedule)
 
 if make_schedules:
-  if diff is None and diff_override == []: sys.exit(f'\nERROR!\n\nframes were not anayzed. Please enable analyze_video in the previous cell, run it, and then run this cell again\n')
+  if diff is None and diff_override == []: 
+    print("sys exitttttt 55555555555")
+    sys.exit(f'\nERROR!\n\nframes were not anayzed. Please enable analyze_video in the previous cell, run it, and then run this cell again\n')
   if diff_override != []: diff = diff_override
 
   print('Applied schedules:')
@@ -9466,9 +9470,11 @@ if retain_overwritten_frames is True:
 if animation_mode == 'Video Input':
   frames = sorted(glob(in_path+'/*.*'));
   if len(frames)==0:
+    print("syssss exitttttttt 666666666")
     sys.exit("ERROR: 0 frames found.\nPlease check your video input path and rerun the video settings cell.")
   flows = glob(flo_folder+'/*.*')
   if (len(flows)==0) and flow_warp:
+    print("sysssss exitttttt 77777777")
     sys.exit("ERROR: 0 flow files found.\nPlease rerun the flow generation cell.")
 settings_out = batchFolder+f"/settings"
 if resume_run:
@@ -9589,6 +9595,7 @@ try:
   do_run()
 except:
   traceback.print_exc()
+  print("exiting 8")
   sys.exit()
 
 print('n_stats_avg (mean, std): ', n_mean_avg, n_std_avg)
@@ -9598,6 +9605,7 @@ torch.cuda.empty_cache()
 
 """# 5. Create the video"""
 
+print("creating the videeooooooo")
 import PIL
 #@title ### **Create video**
 #@markdown Video file will save in the same folder as your images.
