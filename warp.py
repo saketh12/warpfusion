@@ -2,7 +2,7 @@ print("here!!!!")
 
 
 #@title 1.1 Prepare Folders
-import subprocess, os, sys, ipykernel
+import subprocess, os, sys
 
 def gitclone(url, recursive=False, dest=None):
   command = ['git', 'clone', url]
@@ -13,7 +13,7 @@ def gitclone(url, recursive=False, dest=None):
 
 
 def pipi(modulestr):
-  res = subprocess.run(['python','-m','pip', '-q', 'install', modulestr], stdout=subprocess.PIPE).stdout.decode('utf-8')
+  res = subprocess.run(['python3','-m','pip', '-q', 'install', modulestr], stdout=subprocess.PIPE).stdout.decode('utf-8')
   print(res)
 
 def pipie(modulestr):
@@ -123,23 +123,23 @@ class FrameDataset():
 #@title 1.2 Install pytorch
 
 import subprocess
-simple_nvidia_smi_display = True#\@param {type:"boolean"}
-if simple_nvidia_smi_display:
-  #!nvidia-smi
-  nvidiasmi_output = subprocess.run(['nvidia-smi', '-L'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-  print(nvidiasmi_output)
-else:
-  #!nvidia-smi -i 0 -e 0
-  nvidiasmi_output = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-  print(nvidiasmi_output)
-  nvidiasmi_ecc_note = subprocess.run(['nvidia-smi', '-i', '0', '-e', '0'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-  print(nvidiasmi_ecc_note)
+# simple_nvidia_smi_display = False#\@param {type:"boolean"}
+# if simple_nvidia_smi_display:
+#   #!nvidia-smi
+#   nvidiasmi_output = subprocess.run(['nvidia-smi', '-L'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+#   print(nvidiasmi_output)
+# else:
+#   #!nvidia-smi -i 0 -e 0
+#   nvidiasmi_output = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+#   print(nvidiasmi_output)
+#   nvidiasmi_ecc_note = subprocess.run(['nvidia-smi', '-i', '0', '-e', '0'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+#   print(nvidiasmi_ecc_note)
 
 # import torch
 import subprocess, sys
 gpu = None
 def get_version(package):
-  proc = subprocess.run(['pip','show', package], stdout=subprocess.PIPE)
+  proc = subprocess.run(['pip3','show', package], stdout=subprocess.PIPE)
   out = proc.stdout.decode('UTF-8')
   returncode = proc.returncode
   if returncode != 0:
@@ -158,7 +158,7 @@ if force_torch_reinstall:
   subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
   
 
-subprocess.run(['python', '-m', "pip", "-q", "install", "requests"], check=True)
+subprocess.run(['python3', '-m', "pip", "-q", "install", "requests"], check=True)
 import requests
 
 torch_v2_install_failed = False
@@ -180,8 +180,8 @@ if platform.system() != 'Linux' or force_os == 'Windows':
   if use_torch_v2:
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      subprocess.run(['python', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
-      # !python -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
+      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      # !python3 -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
       try:
         import torch
         torch_v2_install_failed = not torch.cuda.is_available()
@@ -200,16 +200,16 @@ if platform.system() != 'Linux' or force_os == 'Windows':
       if "3.10" in sys.version:
         if torchver == -1 or force_torch_reinstall:
             print('Installing torch v1.12.1')
-            subprocess.run(['python', '-m', "pip", "-q", "install", "torch==1.12.1", 'torchvision==0.13.1', '--extra-index-url', 'https://download.pytorch.org/whl/cu113'], check=True)
-            # !python -m pip -q install torch==1.12.1 torchvision==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu113
+            subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==1.12.1", 'torchvision==0.13.1', '--extra-index-url', 'https://download.pytorch.org/whl/cu113'], check=True)
+            # !python3 -m pip -q install torch==1.12.1 torchvision==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu113
         if "1.12" in get_version('torch'):
-          print('Trying to install local xformers on Windows. Works only with pytorch 1.12.* and python 3.10.')
-          subprocess.run(['python', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
-          # !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
+          print('Trying to install local xformers on Windows. Works only with pytorch 1.12.* and python3 3.10.')
+          subprocess.run(['python3', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
+          # !python3 -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/f/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
         elif "1.13" in get_version('torch'):
-          print('Trying to install local xformers on Windows. Works only with pytorch 1.13.* and python 3.10.')
-          subprocess.run(['python', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
-          # !python -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
+          print('Trying to install local xformers on Windows. Works only with pytorch 1.13.* and python3 3.10.')
+          subprocess.run(['python3', '-m', "pip", "-q", "install", "https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl"], check=True)
+          # !python3 -m pip -q install https://github.com/C43H66N12O12S2/stable-diffusion-webui/releases/download/torch13/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl
 try:
   if os.environ["IS_DOCKER"] == "1":
     print('Docker found. Skipping install.')
@@ -253,18 +253,18 @@ if os.environ["IS_DOCKER"]=="1":
   print('Docker detected. Skipping install.')
 
 if not skip_install:
-  subprocess.run(['python', '-m', "pip", "-q", "install", "tqdm", "ipywidgets==7.7.1", 'protobuf==3.20.3'], check=True)
-  # !python -m pip -q install tqdm ipywidgets==7.7.1 protobuf==3.20.3
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "tqdm", "ipywidgets==7.7.1", 'protobuf==3.20.3'], check=True)
+  # !python3 -m pip -q install tqdm ipywidgets==7.7.1 protobuf==3.20.3
   from tqdm import tqdm
   progress_bar = tqdm(total=52)
   progress_bar.set_description("Installing dependencies")
   # with io.capture_output(stderr=False) as captured:
-  subprocess.run(['python', '-m', "pip", "-q", "install", "mediapipe", "piexif"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "safetensors", "lark"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
-  # !python -m pip -q install mediapipe piexif
-  # !python -m pip -q install safetensors lark
-  # !python -m pip -q uninstall torchtext -y
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "mediapipe", "piexif"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "safetensors", "lark"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
+  # !python3 -m pip -q install mediapipe piexif
+  # !python3 -m pip -q install safetensors lark
+  # !python3 -m pip -q uninstall torchtext -y
   progress_bar.update(3) #10
   gitclone('https://github.com/Sxela/sxela-stablediffusion', dest = 'stablediffusion')
   # !git clone -b sdp-attn https://github.com/Sxela/sxela-stablediffusion stablediffusion
@@ -287,76 +287,76 @@ if not skip_install:
         os.chdir( f'../')
   except: pass
   progress_bar.update(2) #25
-  # subprocess.run(['python', '-m', "pip", "-q", "install", "--ignore-installed", "Pillow==6.2.2"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "./stablediffusion"], check=True)
-  # !python -m pip -q install --ignore-installed Pillow==6.2.2
-  # !python -m pip -q install -e ./stablediffusion
+  # subprocess.run(['python3', '-m', "pip", "-q", "install", "--ignore-installed", "Pillow==6.2.2"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "-e", "./stablediffusion"], check=True)
+  # !python3 -m pip -q install --ignore-installed Pillow==6.2.2
+  # !python3 -m pip -q install -e ./stablediffusion
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "ipywidgets==7.7.1"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "transformers==4.19.2"], check=True)
-  # !python -m pip -q install ipywidgets==7.7.1
-  # !python -m pip -q install transformers==4.19.2
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "ipywidgets==7.7.1"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "transformers>=4.19.2"], check=True)
+  # !python3 -m pip -q install ipywidgets==7.7.1
+  # !python3 -m pip -q install transformers==4.19.2
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "omegaconf"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "einops"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "pytorch_lightning>1.4.1,<=1.7.7"], check=True)
-  # !python -m pip -q install omegaconf
-  # !python -m pip -q install einops
-  # !python -m pip -q install "pytorch_lightning>1.4.1,<=1.7.7"
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "omegaconf"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "einops"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "pytorch_lightning>1.4.1,<=1.7.7"], check=True)
+  # !python3 -m pip -q install omegaconf
+  # !python3 -m pip -q install einops
+  # !python3 -m pip -q install "pytorch_lightning>1.4.1,<=1.7.7"
   progress_bar.update(3) #30
-  subprocess.run(['python', '-m', "pip", "-q", "install", "scikit-image"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "opencv-python"], check=True)
-  # !python -m pip -q install scikit-image
-  # !python -m pip -q install opencv-python
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "scikit-image"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "opencv-python"], check=True)
+  # !python3 -m pip -q install scikit-image
+  # !python3 -m pip -q install opencv-python3
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "ai-tools"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "cognitive-face"], check=True)
-  # !python -m pip -q install ai-tools
-  # !python -m pip -q install cognitive-face
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "ai-tools"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "cognitive-face"], check=True)
+  # !python3 -m pip -q install ai-tools
+  # !python3 -m pip -q install cognitive-face
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "zprint"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "kornia==0.5.0"], check=True)
-  # !python -m pip -q install zprint
-  # !python -m pip -q install kornia==0.5.0
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "zprint"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "kornia==0.5.0"], check=True)
+  # !python3 -m pip -q install zprint
+  # !python3 -m pip -q install kornia==0.5.0
   import importlib
   progress_bar.update(2) #40
-  subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "git+https://github.com/openai/CLIP.git@main#egg=clip"], check=True)
-  # !python -m pip -q install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
-  # !python -m pip -q install -e git+https://github.com/openai/CLIP.git@main#egg=clip
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "-e", "git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "-e", "git+https://github.com/openai/CLIP.git@main#egg=clip"], check=True)
+  # !python3 -m pip -q install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+  # !python3 -m pip -q install -e git+https://github.com/openai/CLIP.git@main#egg=clip
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "lpips"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "keras"], check=True)
-  # !python -m pip -q install lpips
-  # !python -m pip -q install keras
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "lpips"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "keras"], check=True)
+  # !python3 -m pip -q install lpips
+  # !python3 -m pip -q install keras
   progress_bar.update(2) #50
   gitclone('https://github.com/Sxela/k-diffusion.git')
   os.chdir( f'./k-diffusion')
   subprocess.run(['git', 'pull'])
-  subprocess.run(['python', '-m', "pip", "-q", "install", "-e", "."], check=True)
-  # !python -m pip -q install -e .
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "-e", "."], check=True)
+  # !python3 -m pip -q install -e .
   os.chdir( f'../')
   import sys
   sys.path.append('./k-diffusion')
   progress_bar.update(1) #60
-  subprocess.run(['python', '-m', "pip", "-q", "install", "wget"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "webdataset"], check=True)
-  # !python -m pip -q install wget
-  # !python -m pip -q install webdataset
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "wget"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "webdataset"], check=True)
+  # !python3 -m pip -q install wget
+  # !python3 -m pip -q install webdataset
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "open_clip_torch"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "opencv-python==4.5.5.64"], check=True)
-  # !python -m pip -q install open_clip_torch
-  # !python -m pip -q install opencv-python==4.5.5.64
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "open_clip_torch"], check=True)
+  # subprocess.run(['python3', '-m', "pip", "-q", "install", "opencv-python==4.5.5.64"], check=True)
+  # !python3 -m pip -q install open_clip_torch
+  # !python3 -m pip -q install opencv-python3==4.5.5.64
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "pandas", "matplotlib"], check=True)
-  # !python -m pip -q uninstall torchtext -y
-  # !python -m pip -q install pandas matplotlib
+  subprocess.run(['python3', '-m', "pip", "-q", "uninstall", "torchtext", "-y"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "pandas", "matplotlib"], check=True)
+  # !python3 -m pip -q uninstall torchtext -y
+  # !python3 -m pip -q install pandas matplotlib
   progress_bar.update(2)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "fvcore"], check=True)
-  # !python -m pip -q install fvcore
-  multipip_res = subprocess.run(['python','-m', 'pip', '-q','install', 'lpips', 'datetime', 'timm==0.6.13', 'ftfy', 'einops', 'pytorch-lightning', 'omegaconf'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "fvcore"], check=True)
+  # !python3 -m pip -q install fvcore
+  multipip_res = subprocess.run(['python3','-m', 'pip', '-q','install', 'lpips', 'datetime', 'timm==0.6.13', 'ftfy', 'einops', 'pytorch-lightning', 'omegaconf'], stdout=subprocess.PIPE).stdout.decode('utf-8')
   progress_bar.update(5)
   print(multipip_res)
   if is_colab:
@@ -405,30 +405,32 @@ if not skip_install:
   pipi('fairscale')
   progress_bar.update(3) #80
   os.chdir(root_dir)
-  subprocess.run(['git', 'clone', "https://github.com/xinntao/Real-ESRGAN.git"], check=True)
+  gitclone("https://github.com/xinntao/Real-ESRGAN.git")
+  # subprocess.run(['git', 'clone', ""], check=True)
   # !git clone https://github.com/xinntao/Real-ESRGAN
   os.chdir('./Real-ESRGAN')
-  subprocess.run(['python', '-m', "pip", "-q", "install", "basicsr"], check=True)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
-  # !python -m pip -q install basicsr
-  # !python -m pip -q install google-cloud-vision
-  # !python -m pip -q install ffmpeg
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "basicsr"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "ffmpeg-python"], check=True)
+  # !python3 -m pip -q install basicsr
+  # !python3 -m pip -q install google-cloud-vision
+  # !python3 -m pip -q install ffmpeg
   progress_bar.update(3) #9085
-  subprocess.run(['python', '-m', "pip", "-q", "install", "-r", "requirements.txt"], check=True)
-  # !python -m pip -q install -r requirements.txt
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "-r", "requirements.txt"], check=True)
+  # !python3 -m pip -q install -r requirements.txt
   progress_bar.update(1) #90
-  subprocess.run(['python', 'setup.py', "develop", "-q"], check=True)
-  # !python setup.py develop -q
+  subprocess.run(['python3', 'setup.py', "develop", "-q"], check=True)
+  # !python3 setup.py develop -q
   os.chdir(root_dir)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
-  # !python -m pip -q install torchmetrics==0.11.4
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
+  # !python3 -m pip -q install torchmetrics==0.11.4
 
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
 sys.path.append(f'{PROJECT_DIR}/ResizeRight')
 sys.path.append(f'{PROJECT_DIR}/guided-diffusion')
 
-# Commented out IPython magic to ensure Python compatibility.
+# Commented out IPython magic to ensure python3 compatibility.
 #@title ### 1.4 Import dependencies, define functions
 
 
@@ -482,6 +484,8 @@ import torch
 DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print('Using device:', DEVICE)
 device = DEVICE # At least one of the modules expects this name..
+
+torch.backends.cudnn.enabled = False
 
 if torch.cuda.get_device_capability(DEVICE) == (8,0): ## A100 fix thanks to Emad
   print('Disabling CUDNN for A100 gpu', file=sys.stderr)
@@ -2332,9 +2336,19 @@ def sd_cond_fn(x, t, denoised, init_image_sd, init_latent, init_scale,
 
 import cv2
 
-# %cd "{root_dir}/python-color-transfer"
+import sys
+import os
+
+target_dir = os.path.join(root_dir, "python-color-transfer")
+
+# Add the target directory to sys.path
+sys.path.append(target_dir)
+
 from python_color_transfer.color_transfer import ColorTransfer, Regrain
-# %cd "{root_path}/"
+
+# To revert back to the original sys.path, you can remove the target_dir from sys.path
+sys.path.remove(target_dir)
+os.chdir(root_path)
 
 PT = ColorTransfer()
 
@@ -3536,6 +3550,7 @@ animation_mode = 'Video Input'
 import os, platform
 if platform.system() != 'Linux' and not os.path.exists("ffmpeg.exe"):
   print("Warning! ffmpeg.exe not found. Please download ffmpeg and place it in current working dir.")
+print("HEYYYY SDFASDF")
 
 
 #@markdown ---
@@ -3573,9 +3588,12 @@ if color_video_path == '':
 store_frames_on_google_drive = False #@param {type: 'boolean'}
 video_init_seed_continuity = False
 
+
+
 def extractFrames(video_path, output_path, nth_frame, start_frame, end_frame):
   createPath(output_path)
   print(f"Exporting Video Frames (1 every {nth_frame})...")
+
   try:
     for f in [o.replace('\\','/') for o in glob(output_path+'/*.jpg')]:
     # for f in pathlib.Path(f'{output_path}').glob('*.jpg'):
@@ -3590,6 +3608,7 @@ def extractFrames(video_path, output_path, nth_frame, start_frame, end_frame):
 
         subprocess.run(['ffmpeg', '-i', f'{video_path}', '-vf', f'{vf}', '-vsync', 'vfr', '-q:v', '2', '-loglevel', 'error', '-stats', f'{output_path}/%06d.jpg'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     except:
+        print(os.getcwd())
         subprocess.run(['ffmpeg.exe', '-i', f'{video_path}', '-vf', f'{vf}', '-vsync', 'vfr', '-q:v', '2', '-loglevel', 'error', '-stats', f'{output_path}/%06d.jpg'], stdout=subprocess.PIPE).stdout.decode('utf-8')
 
   else:
@@ -3654,14 +3673,14 @@ extract_background_mask = False #@param {'type':'boolean'}
 mask_video_path = '' #@param {'type':'string'}
 if extract_background_mask:
   os.chdir(root_dir)
-  subprocess.run(['python', '-m', "pip", "-q", "install", "av", "pims"], check=True)
-  # !python -m pip -q install av pims
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "av", "pims"], check=True)
+  # !python3 -m pip -q install av pims
   gitclone('https://github.com/Sxela/RobustVideoMattingCLI')
   if mask_source == 'init_video':
     videoFramesAlpha = videoFramesFolder+'Alpha'
     createPath(videoFramesAlpha)
-    subprocess.run(['python', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{videoFramesFolder}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
-    # !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{videoFramesFolder}" --output_alpha "{root_dir}/alpha.mp4"
+    subprocess.run(['python3', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{videoFramesFolder}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
+    # !python3 "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{videoFramesFolder}" --output_alpha "{root_dir}/alpha.mp4"
     extractFrames(f"{root_dir}/alpha.mp4", f"{videoFramesAlpha}", 1, 0, 999999999)
   if mask_source == 'mask_video':
     videoFramesAlpha = videoFramesFolder+'Alpha'
@@ -3669,8 +3688,8 @@ if extract_background_mask:
     maskVideoFrames = videoFramesFolder+'Mask'
     createPath(maskVideoFrames)
     extractFrames(mask_video_path, f"{maskVideoFrames}", extract_nth_frame, start_frame, end_frame)
-    subprocess.run(['python', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{maskVideoFrames}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
-    # !python "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{maskVideoFrames}" --output_alpha "{root_dir}/alpha.mp4"
+    subprocess.run(['python3', "{root_dir}/RobustVideoMattingCLI/rvm_cli.py", "--input_path", "{maskVideoFrames}", "--output_alpha", "{root_dir}/alpha.mp4"], check=True)
+    # !python3 "{root_dir}/RobustVideoMattingCLI/rvm_cli.py" --input_path "{maskVideoFrames}" --output_alpha "{root_dir}/alpha.mp4"
     extractFrames(f"{root_dir}/alpha.mp4", f"{videoFramesAlpha}", 1, 0, 999999999)
 else:
   if mask_source == 'init_video':
@@ -3685,7 +3704,7 @@ else:
 
 """
 
-# Commented out IPython magic to ensure Python compatibility.
+# Commented out IPython magic to ensure python3 compatibility.
 #@title Generate optical flow and consistency maps
 #@markdown Run once per init video and width_height setting.
 #if you're running locally, just restart this runtime, no need to edit PIL files.
@@ -4614,12 +4633,12 @@ if (animation_mode == 'Video Input') and (flow_warp):
           if reverse_cc_order:
             #old version, may be incorrect
             print('Doing bwd->fwd cc check')
-            subprocess.run(['python', "{cc_path}", "--flow_fwd", "{fwd}", "--flow_bwd", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
-            # !python "{cc_path}" --flow_fwd "{fwd}" --flow_bwd "{bwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
+            subprocess.run(['python3', "{cc_path}", "--flow_fwd", "{fwd}", "--flow_bwd", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
+            # !python3 "{cc_path}" --flow_fwd "{fwd}" --flow_bwd "{bwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
           else:
             print('Doing fwd->bwd cc check')
-            subprocess.run(['python', "{cc_path}", "--flow_fwd", "{bwd}", "--flow_bwd", "{fwd}", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
-            # !python "{cc_path}" --flow_fwd "{bwd}" --flow_bwd "{fwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
+            subprocess.run(['python3', "{cc_path}", "--flow_fwd", "{bwd}", "--flow_bwd", "{fwd}", "--output", "{flo_fwd_folder}/", "--image_output", "--output_postfix=", "-21_cc", "--blur=0.", "--save_separate_channels", "--skip_numpy_output"], check=True)
+            # !python3 "{cc_path}" --flow_fwd "{bwd}" --flow_bwd "{fwd}" --output "{flo_fwd_folder}/" --image_output --output_postfix="-21_cc" --blur=0. --save_separate_channels --skip_numpy_output
           # delete forward flow
           # for f in pathlib.Path(flo_fwd_folder).glob('*jpg_12.npy'):
           #   f.unlink()
