@@ -157,8 +157,6 @@ if force_torch_reinstall:
   subprocess.run(['pip', 'uninstall', 'torch', 'torchvision', 'torchaudio', 'cudatoolkit', 'xformers', '-y'], check=True)
   subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
   
-
-subprocess.run(['python3', '-m', "pip", "-q", "install", "requests"], check=True)
 import requests
 
 torch_v2_install_failed = False
@@ -180,7 +178,7 @@ if platform.system() != 'Linux' or force_os == 'Windows':
   if use_torch_v2:
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      # subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
       # !python3 -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
       try:
         import torch
@@ -245,7 +243,7 @@ if (is_colab or (platform.system() == 'Linux') or force_os == 'Linux') and os.en
 # from IPython.utils import io
 
 #@markdown Enable skip_install to avoid reinstalling dependencies after the initial setup.
-skip_install = False #@param {'type':'boolean'}
+skip_install = True #@param {'type':'boolean'}
 os.makedirs('./embeddings', exist_ok=True)
 import os
 if os.environ["IS_DOCKER"]=="1":
