@@ -411,7 +411,7 @@ if not skip_install:
   os.chdir('./Real-ESRGAN')
   subprocess.run(['python3', '-m', "pip", "-q", "install", "basicsr"], check=True)
   subprocess.run(['python3', '-m', "pip", "-q", "install", "google-cloud-vision"], check=True)
-  subprocess.run(['python3', '-m', "pip", "-q", "install", "ffmpeg-python"], check=True)
+  subprocess.run(['python3', '-m', "pip", "-q", "install", "ffmpeg"], check=True)
   # !python3 -m pip -q install basicsr
   # !python3 -m pip -q install google-cloud-vision
   # !python3 -m pip -q install ffmpeg
