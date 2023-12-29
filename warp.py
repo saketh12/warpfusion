@@ -456,7 +456,7 @@ import torchvision.transforms.functional as TF
 from tqdm import tqdm
 # from CLIP import clip
 from resize_right import resize
-from guided-diffusion.script_util import create_model_and_diffusion, model_and_diffusion_defaults
+# from guided_diffusion.script_util import create_model_and_diffusion, model_and_diffusion_defaults
 from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
