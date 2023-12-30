@@ -423,6 +423,7 @@ if not skip_install:
   subprocess.run(['python3', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
   # !python3 -m pip -q install torchmetrics==0.11.4
 
+print("LOLBSBSBSBSBS")
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
 sys.path.append(f'{PROJECT_DIR}/ResizeRight')
@@ -2158,9 +2159,9 @@ from contextlib import nullcontext
 import time
 from pytorch_lightning import seed_everything
 
+print("subprocess pathhh")
 os.chdir(f"{root_dir}/stablediffusion")
 
-print("subprocess pathhh")
 result = subprocess.run(['ls'], capture_output=True, text=True)
 print(result.stdout)
 if result.returncode != 0:
