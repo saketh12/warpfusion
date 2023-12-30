@@ -1,8 +1,11 @@
 print("here!!!!")
 
-
 #@title 1.1 Prepare Folders
 import subprocess, os, sys
+
+if len(sys.argv) > 1:
+  user_seed = sys.argv[1]
+user_prompt = sys.argv[0]
 
 def gitclone(url, recursive=False, dest=None):
   command = ['git', 'clone', url]
@@ -422,8 +425,6 @@ if not skip_install:
   os.chdir(root_dir)
   subprocess.run(['python3', '-m', "pip", "-q", "install", "torchmetrics==0.11.4"], check=True)
   # !python3 -m pip -q install torchmetrics==0.11.4
-
-print("LOLBSBSBSBSBS")
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
 sys.path.append(f'{PROJECT_DIR}/ResizeRight')
@@ -6145,9 +6146,7 @@ clamp_max = 2 #@param{type: 'number'}
 `animation_mode: None` will only use the first set. `animation_mode: 2D / Video` will run through them per the set frames and hold on the last one.
 """
 
-text_prompts = {0: ['a beautiful highly detailed cyberpunk mechanical \
-augmented most beautiful (woman) ever, cyberpunk 2077, neon, dystopian, \
-hightech, trending on artstation']}
+text_prompts = {0: [user_prompt]}
 
 negative_prompts = {
     0: ["text, naked, nude, logo, cropped, two heads, four arms, lazy eye, blurry, unfocused"]
