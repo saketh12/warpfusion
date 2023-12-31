@@ -7,6 +7,8 @@ if len(sys.argv) > 1:
   user_seed = sys.argv[1]
 user_prompt = sys.argv[0]
 
+print("Prompt:", user_prompt)
+
 def gitclone(url, recursive=False, dest=None):
   command = ['git', 'clone', url]
   if dest: command.append(dest)
