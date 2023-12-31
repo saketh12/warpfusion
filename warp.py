@@ -3,7 +3,7 @@ print("here!!!!")
 #@title 1.1 Prepare Folders
 import subprocess, os, sys
 
-if len(sys.argv) > 1:
+if len(sys.argv) > 2:
   user_seed = sys.argv[2]
 user_prompt = sys.argv[1]
 
