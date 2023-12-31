@@ -9768,7 +9768,7 @@ if upscale_ratio>1:
       )
 
 #@markdown ### **Video settings**
-use_deflicker = False #@param {'type':'boolean'}
+use_deflicker = True #@param {'type':'boolean'}
 if platform.system() != 'Linux':
    use_deflicker = False
    print('Disabling ffmpeg deflicker filter for windows install, as it is causing a crash.')
