@@ -3712,7 +3712,7 @@ else:
 #if you're running locally, just restart this runtime, no need to edit PIL files.
 flow_warp = True
 check_consistency = True
-force_flow_generation = False #@param {type:'boolean'}
+force_flow_generation = True #@param {type:'boolean'}
 
 use_legacy_cc = False #@param{'type':'boolean'}
 
