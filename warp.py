@@ -1238,7 +1238,7 @@ def softcap(arr, thresh=0.8, q=0.95):
   return arr
 
 def do_run():
-  seed = args.seed
+  seed = user_seed
   print(range(args.start_frame, args.max_frames))
   if args.animation_mode != "None":
     batchBar = tqdm(total=args.max_frames, desc ="Frames")
