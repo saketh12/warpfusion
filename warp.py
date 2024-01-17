@@ -4,7 +4,7 @@ print("here!!!!")
 import subprocess, os, sys
 
 if len(sys.argv) > 2:
-  user_seed = sys.argv[2]
+  user_seed = int(sys.argv[2])
 user_prompt = sys.argv[1]
 
 print("Prompt:", user_prompt)
