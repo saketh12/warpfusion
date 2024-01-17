@@ -3719,7 +3719,7 @@ use_legacy_cc = False #@param{'type':'boolean'}
 #@title Setup Optical Flow
 ##@markdown Run once per session. Doesn't download again if model path exists.
 ##@markdown Use force download to reload raft models if needed
-force_download = False #\@param {type:'boolean'}
+force_download = True #\@param {type:'boolean'}
 # import wget
 import zipfile, shutil
 
@@ -5184,8 +5184,8 @@ if not is_colab and (controlnet_models_dir.startswith('/content') or controlnet_
 os.makedirs(controlnet_models_dir, exist_ok=True)
 #@markdown ---
 
-control_sd15_canny  = False
-control_sd15_depth  = False
+control_sd15_canny  = True
+control_sd15_depth  = True
 control_sd15_softedge  = True
 control_sd15_mlsd  = False
 control_sd15_normalbae  = False
