@@ -3,9 +3,11 @@ print("here!!!!")
 #@title 1.1 Prepare Folders
 import subprocess, os, sys
 
-if len(sys.argv) > 2:
-  user_seed = int(sys.argv[2])
+if len(sys.argv) > 4:
+  user_seed = int(sys.argv[4])
 user_prompt = sys.argv[1]
+user_width = int(sys.argv[2])
+user_height = int(sys.argv[3])
 
 print("Prompt:", user_prompt)
 
@@ -3491,7 +3493,7 @@ stop_early = 0
 stop_early = min(steps-1,stop_early)
 #@markdown Specify desired output size here.\
 #@markdown Don't forget to rerun all steps after changing the width height (including forcing optical flow generation)
-width_height = [480,480]#@param{type: 'raw'}
+width_height = [user_width,user_height]#@param{type: 'raw'}
 width_height = [int(o) for o in width_height]
 clip_guidance_scale = 0 #
 tv_scale =  0
@@ -9675,9 +9677,9 @@ if use_background_mask_video:
   if invert_mask_video:
     postfix+='_inv'
 #@markdown #### Upscale settings
-upscale_ratio = "1" #@param [1,2,3,4]
+upscale_ratio = "4" #@param [1,2,3,4]
 upscale_ratio = int(upscale_ratio)
-upscale_model = 'realesr-animevideov3' #@param ['RealESRGAN_x4plus', 'RealESRNet_x4plus', 'RealESRGAN_x4plus_anime_6B', 'RealESRGAN_x2plus', 'realesr-animevideov3', 'realesr-general-x4v3']
+upscale_model = 'RealESRGAN_x4plus' #@param ['RealESRGAN_x4plus', 'RealESRNet_x4plus', 'RealESRGAN_x4plus_anime_6B', 'RealESRGAN_x2plus', 'realesr-animevideov3', 'realesr-general-x4v3']
 
 #@markdown #### Multithreading settings
 #@markdown Suggested range - from 1 to number of cores on SSD and double number of cores - on HDD. Mostly limited by your drive bandwidth.
