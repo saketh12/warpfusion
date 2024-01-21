@@ -6,8 +6,8 @@ import subprocess, os, sys
 if len(sys.argv) > 4:
   user_seed = int(sys.argv[4])
 user_prompt = sys.argv[1]
-user_width = int(sys.argv[2])
-user_height = int(sys.argv[3])
+user_width = int(float(sys.argv[2]))
+user_height = int(float(sys.argv[3]))
 
 print("Prompt:", user_prompt)
 
