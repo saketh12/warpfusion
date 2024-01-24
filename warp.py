@@ -3560,7 +3560,7 @@ print("HEYYYY SDFASDF")
 #@markdown ---
 
 
-video_init_path = "bron2.mp4" #@param {type: 'string'}
+video_init_path = "video.mp4" #@param {type: 'string'}
 
 extract_nth_frame =  1#@param {type: 'number'}
 #@markdown *Specify frame range. end_frame=0 means fill the end of video*
