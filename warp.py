@@ -1261,9 +1261,6 @@ def do_run():
         batchBar.refresh()
         # display.display(batchBar.container)
 
-
-
-
       # Inits if not video frames
       if args.animation_mode != "Video Input Legacy":
         if args.init_image == '':
@@ -9614,8 +9611,9 @@ gc.collect()
 torch.cuda.empty_cache()
 try:
   do_run()
-except:
-  traceback.print_exc()
+except Exception as e:  # Catch the exception
+  traceback.print_exc()  # Print the traceback
+  print("Error:", e)  # Print the exception message
   print("exiting 8")
   sys.exit()
 
