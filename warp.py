@@ -185,7 +185,7 @@ if platform.system() != 'Linux' or force_os == 'Windows':
   if use_torch_v2:
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      # subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
       # !python3 -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
       try:
         import torch
