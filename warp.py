@@ -155,7 +155,7 @@ def get_version(package):
 import os, platform
 force_os = 'off' #\@param ['off','Windows','Linux']
 
-force_torch_reinstall = False #@param {'type':'boolean'}
+force_torch_reinstall = True #@param {'type':'boolean'}
 force_xformers_reinstall = False #\@param {'type':'boolean'}
 #@markdown Use v2 by default.
 use_torch_v2 = True #@param {'type':'boolean'}
@@ -166,6 +166,7 @@ if force_torch_reinstall:
   
 import requests
 
+print("YO JIT")
 print(get_version('torch'))
 
 torch_v2_install_failed = False
@@ -224,6 +225,8 @@ try:
     print('Docker found. Skipping install.')
 except:
   os.environ["IS_DOCKER"] = "0"
+
+print(get_version('torch'))
 
 if (is_colab or (platform.system() == 'Linux') or force_os == 'Linux') and os.environ["IS_DOCKER"]=="0":
   from subprocess import getoutput
