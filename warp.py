@@ -155,16 +155,15 @@ def get_version(package):
 import os, platform
 force_os = 'off' #\@param ['off','Windows','Linux']
 
-force_torch_reinstall = True #@param {'type':'boolean'}
+force_torch_reinstall = False #@param {'type':'boolean'}
 force_xformers_reinstall = False #\@param {'type':'boolean'}
 #@markdown Use v2 by default.
 use_torch_v2 = True #@param {'type':'boolean'}
 if force_torch_reinstall:
   print('Uninstalling torch...')
-  subprocess.run(['pip', 'uninstall', 'torch', 'torchvision', 'torchaudio', 'cudatoolkit', 'xformers', '-y'], check=True)
-  subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.16.0', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+  # subprocess.run(['pip', 'uninstall', 'torch', 'torchvision', 'torchaudio', 'cudatoolkit', 'xformers', '-y'], check=True)
   # subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
-  
+
 import requests
 
 print("YO JIT")
