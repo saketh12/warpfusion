@@ -166,7 +166,7 @@ if force_torch_reinstall:
   
 import requests
 
-print("one thot")
+print(get_version('torch'))
 
 torch_v2_install_failed = False
 if platform.system() != 'Linux' or force_os == 'Windows':
@@ -188,7 +188,7 @@ if platform.system() != 'Linux' or force_os == 'Windows':
     print("two thot")
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.1.0", 'torchvision==0.16.0', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.16.0', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
       # !python3 -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
       print("red thot")
       try:
