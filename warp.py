@@ -155,7 +155,7 @@ def get_version(package):
 import os, platform
 force_os = 'off' #\@param ['off','Windows','Linux']
 
-force_torch_reinstall = False #@param {'type':'boolean'}
+force_torch_reinstall = True #@param {'type':'boolean'}
 force_xformers_reinstall = False #\@param {'type':'boolean'}
 #@markdown Use v2 by default.
 use_torch_v2 = True #@param {'type':'boolean'}
