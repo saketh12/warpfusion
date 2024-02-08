@@ -162,9 +162,11 @@ use_torch_v2 = True #@param {'type':'boolean'}
 if force_torch_reinstall:
   print('Uninstalling torch...')
   subprocess.run(['pip', 'uninstall', 'torch', 'torchvision', 'torchaudio', 'cudatoolkit', 'xformers', '-y'], check=True)
-  subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
+  # subprocess.run(['conda', 'uninstall', "pytorch", "torchvision", "torchaudio", "cudatoolkit", "-y"], check=True)
   
 import requests
+
+print("one thot")
 
 torch_v2_install_failed = False
 if platform.system() != 'Linux' or force_os == 'Windows':
@@ -183,10 +185,12 @@ if platform.system() != 'Linux' or force_os == 'Windows':
   if torchver == -1: print('Torch not found.')
   else: print('Found torch:', torchver)
   if use_torch_v2:
+    print("two thot")
     if torchver == -1 or force_torch_reinstall:
       print('Installing torch v2.')
-      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.0.0", 'torchvision==0.15.1', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
+      subprocess.run(['python3', '-m', "pip", "-q", "install", "torch==2.1.0", 'torchvision==0.16.0', '--upgrade', '--index-url', 'https://download.pytorch.org/whl/cu117'], check=True)
       # !python3 -m pip -q install torch==2.0.0 torchvision==0.15.1 --upgrade --index-url https://download.pytorch.org/whl/cu117
+      print("red thot")
       try:
         import torch
         torch_v2_install_failed = not torch.cuda.is_available()
