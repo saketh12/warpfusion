@@ -6376,7 +6376,7 @@ softcap_thresh = 0.9 # scale down absolute values above that threshold (latents 
 softcap_q = 1. # percentile to downscale. 1-downscle full range with outliers, 0.9 - downscale only 90%  values above thresh, clamp 10%)
 
 max_faces = 10
-masked_guidance = False #use mask for init/latent guidance to ignore inconsistencies and only guide based on the consistent areas
+masked_guidance = True #use mask for init/latent guidance to ignore inconsistencies and only guide based on the consistent areas
 cc_masked_diffusion = 0.7  # 0 - off. 0.5-0.7 are good values. make inconsistent area passes only before this % of actual steps, then diffuse whole image
 alpha_masked_diffusion = 0.  # 0 - off. 0.5-0.7 are good values. make alpha masked area passes only before this % of actual steps, then diffuse whole image
 invert_alpha_masked_diffusion = False
@@ -9682,7 +9682,7 @@ if use_background_mask_video:
   if invert_mask_video:
     postfix+='_inv'
 #@markdown #### Upscale settings
-upscale_ratio = "4" #@param [1,2,3,4]
+upscale_ratio = "1" #@param [1,2,3,4]
 upscale_ratio = int(upscale_ratio)
 upscale_model = 'RealESRGAN_x4plus' #@param ['RealESRGAN_x4plus', 'RealESRNet_x4plus', 'RealESRGAN_x4plus_anime_6B', 'RealESRGAN_x2plus', 'realesr-animevideov3', 'realesr-general-x4v3']
 
