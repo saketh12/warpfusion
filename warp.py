@@ -6157,7 +6157,7 @@ clamp_max = 2 #@param{type: 'number'}
 text_prompts = {0: [user_prompt]}
 
 negative_prompts = {
-    0: ["text, naked, nude, logo, cropped, two heads, four arms, lazy eye, blurry, unfocused"]
+    0: ["smoke, fog, lowres, (bad anatomy:1.2), EasyNegative, multiple views, six fingers, black & white, monochrome, (bad hands:1.2), (text:1.2), error, cropped, worst quality, low quality, normal quality, jpeg artifacts, (signature:1.2), (watermark:1.3), username, blurry, out of focus, amateur drawing, colored, shading, displaced feet, out of frame, massive breasts, large breasts ,((ugly)), nude   nsfw"]
 }
 
 """### Warp Turbo Smooth Settings
