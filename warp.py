@@ -446,6 +446,7 @@ sys.path.append(f'{PROJECT_DIR}/guided-diffusion')
 
 
 import torch
+
 from dataclasses import dataclass
 from functools import partial
 import cv2
@@ -9990,3 +9991,5 @@ else:
   #     mp4 = open(filepath,'rb').read()
   #     data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
   #     display.HTML(f'<video width=400 controls><source src="{data_url}" type="video/mp4"></video>')
+
+torch.cuda.empty_cache()
