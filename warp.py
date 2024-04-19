@@ -1,3 +1,5 @@
+print("hererrererer !!!!!!!!")
+
 #@title Prepare folders & Install
 import subprocess, os, sys
 
@@ -6171,7 +6173,7 @@ check_execution(cell_name)
 #@markdown ###**Basic Settings:**
 
 print("CAME HERERE CREATING FOLDER")
-batch_name = 'stable_warpfusion_0.17.0' #@param{type: 'string'}
+batch_name =  'stable_warpfusion_0.32.0' #'stable_warpfusion_0.17.0' #@param{type: 'string'}
 steps =  50
 ##@param [25,50,100,150,250,500,1000]{type: 'raw', allow-input: true}
 # stop_early = 0  #@param{type: 'number'}
