@@ -6170,6 +6170,7 @@ check_execution(cell_name)
 
 #@markdown ###**Basic Settings:**
 
+print("CAME HERERE CREATING FOLDER")
 batch_name = 'stable_warpfusion_0.17.0' #@param{type: 'string'}
 steps =  50
 ##@param [25,50,100,150,250,500,1000]{type: 'raw', allow-input: true}
@@ -6202,8 +6203,12 @@ diffusion_steps = (1000//steps)*steps if steps < 1000 else steps
 
 
 #Make folder for batch
+print("MAKING FOLDER")
+
 batchFolder = f'{outDirPath}/{batch_name}'
 createPath(batchFolder)
+
+print("BATCH FOLDER", batchFolder)
 
 #@markdown  ###**Output Size  Settings**
 #@markdown Specify desired output size here  [width,height] or use a single number to resize the frame keeping aspect ratio.\
