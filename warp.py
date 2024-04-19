@@ -3,6 +3,14 @@ import subprocess, os, sys
 
 #cell execution check thanks to #soze
 
+if len(sys.argv) > 4:
+  user_seed = int(sys.argv[4])
+user_prompt = sys.argv[1]
+user_width = int(float(sys.argv[2]))
+user_height = int(float(sys.argv[3]))
+
+print("Prompt:", user_prompt)
+
 executed_cells = {
     'prepare_folders':False,
     # 'install_pytorch':False,
@@ -8789,9 +8797,11 @@ executed_cells[cell_name] = True
 cell_name = 'prompts'
 check_execution(cell_name)
 
-text_prompts = {0: ['a beautiful highly detailed cyberpunk mechanical \
-augmented most beautiful (woman) ever, cyberpunk 2077, neon, dystopian, \
-hightech, trending on artstation']}
+
+text_prompts = {0: [user_prompt]}
+# text_prompts = {0: ['a beautiful highly detailed cyberpunk mechanical \
+# augmented most beautiful (woman) ever, cyberpunk 2077, neon, dystopian, \
+# hightech, trending on artstation']}
 
 negative_prompts = {
     0: ["text, naked, nude, logo, cropped, two heads, four arms, lazy eye, blurry, unfocused"]
