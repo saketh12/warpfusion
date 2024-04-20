@@ -1,7 +1,7 @@
 {
     "text_prompts": {
         "0": [
-            "soccer player, marble style, greek god, realistic", "style": "Marble"
+            "soccer player, marble style, greek god, realistic"
         ]
     },
     "user_comment": "v0.30",
