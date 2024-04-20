@@ -7229,7 +7229,7 @@ class InstructPix2PixCFGDenoiser(nn.Module):
 dynamic_thresh = 2.
 device = 'cuda'
 # config_path = f"{root_dir}/stable-diffusion/configs/stable-diffusion/v1-inference.yaml"
-model_path = "C:\\models\\checkpoints\\revAnimated_v122.safetensors" #@param {'type':'string'}
+model_path = "model.safetensors" #@param {'type':'string'}
 import pickle
 #@markdown ---
 #@markdown ControlNet download settings
@@ -7250,17 +7250,24 @@ os.makedirs(controlnet_models_dir, exist_ok=True)
 #@markdown ---
 
 import os
-
-print("OSSSSS PATH")
-print(os.getcwd())
-
 import sys
-# print(sys.path)
-
-sys.path.append(os.getcwd()) 
 
 if 'control_multi' in model_version:
   os.chdir(f"{root_dir}/ControlNet/")
+  print("subprocess pathhh")
+  result = subprocess.run(['ls'], capture_output=True, text=True)
+  print(result.stdout)
+  if result.returncode != 0:
+      print("Error:", result.stderr)
+  import os
+
+  print("OSSSSS PATH")
+  print(os.getcwd())
+
+  import sys
+  # print(sys.path)
+
+  sys.path.append(os.getcwd()) 
   from annotator.util import resize_image, HWC3
   from cldm.model import create_model, load_state_dict
   os.chdir('../')
