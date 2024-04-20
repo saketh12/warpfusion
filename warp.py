@@ -9451,7 +9451,7 @@ cell_name = 'lora'
 weight_load_location = 'cpu'
 from modules import devices, shared
 #@markdown Specify folders containing your Loras and Textual Inversion Embeddings. Detected loras will be listed after you run the cell.
-lora_dir = 'c:\\models\\loras' #@param {'type':'string'}
+lora_dir = './lora' #@param {'type':'string'}
 if not is_colab and lora_dir.startswith('/content'):
   lora_dir = './loras'
   print('Overriding lora dir to ./loras for non-colab env because you path begins with /content. Change path to desired folder')
