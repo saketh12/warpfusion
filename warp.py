@@ -93,7 +93,7 @@ def check_execution(cell_name):
 RUN ALL after starting runtime (CTRL-F9)');
 
 cell_name = 'prepare_folders'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 
 def gitclone(url, recursive=False, dest=None, branch=None):
@@ -343,7 +343,7 @@ executed_cells[cell_name] = True
 
 
 cell_name = 'import_dependencies'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 user_settings_keys = ['latent_scale_schedule', 'init_scale_schedule', 'steps_schedule', 'style_strength_schedule',
                            'cfg_scale_schedule', 'flow_blend_schedule', 'image_scale_schedule', 'flow_override_map',
@@ -6168,7 +6168,7 @@ executed_cells[cell_name] = True
 
 #@title ##Video Input Settings:
 cell_name = 'video_input_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 #@markdown ###**Basic Settings:**
 
@@ -6450,7 +6450,7 @@ If you're having black frames with sdxl, turn off tiled vae, enable no_half_vae 
 #@markdown specify path to your Stable Diffusion checkpoint (the "original" flavor)
 #@title define SD + K functions, load model
 cell_name = 'load_model'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 from safetensors import safe_open
 import argparse
@@ -8478,7 +8478,7 @@ executed_cells[cell_name] = True
 #@markdown After saving model as pickle, you can then load it as your usual stable diffusion model in thecell above.\
 #@markdown The model will be saved under the same name with .pkl extenstion.
 cell_name = 'save_loaded_model'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 save_model_pickle = False #@param {'type':'boolean'}
 save_folder = "/content/drive/MyDrive/models" #@param {'type':'string'}
@@ -8498,7 +8498,7 @@ executed_cells[cell_name] = True
 #@markdown rmse function is faster than lpips, but less precise.\
 #@markdown After the analysis is done, check the graph and pick a threshold that works best for your video. 0.5 is a good one for lpips, 1.2 is a good one for rmse. Don't forget to adjust the templates with new threshold in the cell below.
 cell_name = 'content_aware_scheduling'
-check_execution(cell_name)
+# check_execution(cell_name)
 def load_img_lpips(path, size=(512,512)):
     image = Image.open(path).convert("RGB")
     image = image.resize(size, resample=Image.LANCZOS)
@@ -8561,7 +8561,7 @@ executed_cells[cell_name] = True
 #@title Plot threshold vs frame difference
 #@markdown The suggested threshold may be incorrect, so you can plot your value and see if it covers the peaks.
 cell_name = 'plot_threshold_vs_frame_difference'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 if diff is not None:
   import numpy as np
@@ -8590,7 +8590,7 @@ executed_cells[cell_name] = True
 
 #@title Create schedules from frame difference
 cell_name = 'create_schedules'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 def adjust_schedule(diff, normal_val, new_scene_val, thresh, falloff_frames, sched=None):
   diff_array = np.array(diff)
@@ -8656,7 +8656,7 @@ executed_cells[cell_name] = True
 #@markdown keyframe source: Every n-th frame, user-input, Content-aware scheduling keyframes
 
 cell_name = 'frame_captioning'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 inputFrames = sorted(glob(f'{videoFramesFolder}/*.jpg'))
 make_captions = False #@param {'type':'boolean'}
@@ -8781,7 +8781,7 @@ These settings are used as initial settings for the GUI unless you specify defau
 #@title Flow and turbo settings
 #@markdown #####**Video Optical Flow Settings:**
 cell_name = 'flow_and_turbo_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 flow_warp = True #@param {type: 'boolean'}
 #cal optical flow from video frames and warp prev frame with flow
@@ -8810,7 +8810,7 @@ executed_cells[cell_name] = True
 #@markdown edges_consistency_weight - masks moving objects' edges\
 #@markdown The default values to simulate previous versions' behavior are 1,1,1
 cell_name = 'consistency_maps_mixing'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 missed_consistency_weight = 1 #@param {'type':'slider', 'min':'0', 'max':'1', 'step':'0.05'}
 overshoot_consistency_weight = 1 #@param {'type':'slider', 'min':'0', 'max':'1', 'step':'0.05'}
@@ -8820,7 +8820,7 @@ executed_cells[cell_name] = True
 
 #@title  ####**Seed and grad Settings:**
 cell_name = 'seed_and_grad_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 set_seed = '4275770367' #@param{type: 'string'}
 
 
@@ -8839,7 +8839,7 @@ executed_cells[cell_name] = True
 """
 
 cell_name = 'prompts'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 
 text_prompts = {0: [user_prompt]}
@@ -8865,7 +8865,7 @@ soften_consistency_mask_for_turbo_frames - same, but for turbo frames
 #@title ##Warp Turbo Smooth Settings
 #@markdown Skip steps for turbo frames. Select 100% to skip diffusion rendering for turbo frames completely.
 cell_name = 'warp_turbo_smooth_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 turbo_frame_skips_steps = '100% (don`t diffuse turbo frames, fastest)' #@param ['70%','75%','80%','85%', '90%', '95%', '100% (don`t diffuse turbo frames, fastest)']
 
@@ -8947,7 +8947,7 @@ executed_cells[cell_name] = True
 #@title Video mask settings
 #@markdown Check to enable background masking during render. Not recommended, better use masking when creating the output video for more control and faster testing.
 cell_name = 'video_mask_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 use_background_mask = False #@param {'type':'boolean'}
 #@markdown Check to invert the mask.
@@ -8968,7 +8968,7 @@ executed_cells[cell_name] = True
 #@markdown ###Latent matching
 #@markdown Match the range of latent vector towards the 1st frame or a user defined range. Doesn't restrict colors, but may limit contrast.
 cell_name = 'frame_correction'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 
 normalize_latent = 'off' #@param ['off', 'color_video', 'color_video_offset', 'user_defined', 'stylized_frame', 'init_frame', 'stylized_frame_offset', 'init_frame_offset']
@@ -9006,7 +9006,7 @@ Duplicated in the GUI and can be loaded there.
 # @title Basic
 
 cell_name = 'main_settings'
-check_execution(cell_name)
+# check_execution(cell_name)
 # DD-style losses, renders 2 times slower (!) and more memory intensive :D
 
 latent_scale_schedule = [0,0] #controls coherency with previous frame in latent space. 0 is a good starting value. 1+ render slower, but may improve image coherency. 100 is a good value if you decide to turn it on.
@@ -9286,7 +9286,7 @@ executed_cells[cell_name] = True
 
 #these variables are not in the GUI and are not being loaded.
 cell_name = 'advanced'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 # torch.backends.cudnn.enabled = True # disabling this may increase performance on Ampere and Ada GPUs
 
@@ -9446,7 +9446,7 @@ Don't forget to set up if you use loras
 
 #@title LORA & embedding paths
 cell_name = 'lora'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 weight_load_location = 'cpu'
 from modules import devices, shared
@@ -9608,7 +9608,7 @@ executed_cells[cell_name] = True
 ###############################################################################################################################################
 #@title gui
 cell_name = 'GUI'
-check_execution(cell_name)
+# check_execution(cell_name)
 global_keys = ['global', '', -1, '-1','global_settings']
 if 'animatediff' in model_version:
   print('Animatediff has limited functionality at the moment. Stay tuned!')
@@ -10702,7 +10702,7 @@ if you are having OOM or PIL error here click "restart and run all" once.
 
 ipadapter_embeds_cache = {}
 cell_name = 'do_the_run'
-check_execution(cell_name)
+# check_execution(cell_name)
 list_available_networks(lora_dir)
 # only_preview_controlnet = False #@param {'type':'boolean'}
 # skip_diffuse_cell = False #@param {'type':'boolean'}
@@ -11754,7 +11754,7 @@ import PIL
 #@title ### **Create video**
 #@markdown Video file will save in the same folder as your images.
 cell_name = 'create_video'
-check_execution(cell_name)
+# check_execution(cell_name)
 
 from tqdm.notebook import trange
 skip_video_for_run_all = False #@param {type: 'boolean'}
