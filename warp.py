@@ -8186,6 +8186,16 @@ if model_version in ['control_multi', 'control_multi_animatediff']:
   sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath('./')), "comfy"))
   sys.argv=['']
   import os, sys
+  print("subprocess pathhh")
+  result = subprocess.run(['ls'], capture_output=True, text=True)
+  print(result.stdout)
+  if result.returncode != 0:
+      print("Error:", result.stderr)
+  import os
+  print("OSSSSS PATH")
+  print(os.getcwd())
+  import sys
+  sys.path.append(os.getcwd()) 
   sys.path.append('./comfy')
   from comfy.sd import load_controlnet
   os.chdir(f'{root_dir}')
@@ -8197,6 +8207,16 @@ if model_version in ['control_multi_sdxl','control_multi_animatediff_sdxl']:
   sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath('./')), "comfy"))
   sys.argv=['']
   import os, sys
+  print("subprocess pathhh")
+  result = subprocess.run(['ls'], capture_output=True, text=True)
+  print(result.stdout)
+  if result.returncode != 0:
+      print("Error:", result.stderr)
+  import os
+  print("OSSSSS PATH")
+  print(os.getcwd())
+  import sys
+  sys.path.append(os.getcwd()) 
   sys.path.append('./comfy')
   from comfy.sd import load_controlnet
   os.chdir(f'{root_dir}')
