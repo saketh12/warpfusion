@@ -9465,6 +9465,17 @@ if not is_colab and custom_embed_dir.startswith('/content'):
 # %cd C:\code\warp\18_venv\stablediffusion\modules\Lora
 
 os.chdir(f'{root_dir}/stablediffusion/modules/Lora')
+print("subprocess pathhh")
+result = subprocess.run(['ls'], capture_output=True, text=True)
+print(result.stdout)
+if result.returncode != 0:
+  print("Error:", result.stderr)
+import os
+print("OSSSSS PATH")
+print(os.getcwd())
+import sys
+sys.path.append(os.getcwd()) 
+
 from networks import list_available_networks, available_networks, load_networks, assign_network_names_to_compvis_modules, loaded_networks
 import networks
 os.chdir(root_dir)
