@@ -10570,7 +10570,7 @@ def save_settings_from_gui():
 def get_value(key, obj):
     if isinstance(obj, dict):
         if key in obj.keys():
-            return obj[key].value
+            return obj[key]#.value
         else:
             for o in obj.keys():
                 res = get_value(key, obj[o])
@@ -10584,7 +10584,8 @@ def get_value(key, obj):
 def set_value(key, value, obj):
     if isinstance(obj, dict):
         if key in obj.keys():
-            obj[key].value = value
+          obj[key] = value
+            # obj[key].value = value
         else:
             for o in obj.keys():
                 set_value(key, value, obj[o])
