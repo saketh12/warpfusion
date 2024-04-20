@@ -11291,12 +11291,32 @@ for i in trange(max(len(settings_queue),1)):
                 wget.download(depth_anything_url, depth_anything_path)
                 print('Downloaded depth anything annotator checkpoint.')
               sys.path.append(f'{root_dir}/Depth-Anything')
+              print("subprocess pathhh")
+              result = subprocess.run(['ls'], capture_output=True, text=True)
+              print(result.stdout)
+              if result.returncode != 0:
+                  print("Error:", result.stderr)
+              import os
+              print("OSSSSS PATH")
+              print(os.getcwd())
+              import sys
+              sys.path.append(os.getcwd()) 
               from annotator.depth_anything import DepthAnythingDetector
               apply_depth = DepthAnythingDetector(ckpt=depth_anything_path)
               apply_depth.device = 'cuda'
 
     normalbae_cns = set(["control_sd15_normalbae", "control_sd21_normalbae"])
     if len(normalbae_cns.intersection(set(controlnet_keys)))>0:
+            print("subprocess pathhh")
+            result = subprocess.run(['ls'], capture_output=True, text=True)
+            print(result.stdout)
+            if result.returncode != 0:
+                print("Error:", result.stderr)
+            import os
+            print("OSSSSS PATH")
+            print(os.getcwd())
+            import sys
+            sys.path.append(os.getcwd()) 
             from annotator.normalbae import NormalBaeDetector
             apply_normal = NormalBaeDetector()
             print('Loaded NormalBaeDetector')
@@ -11304,6 +11324,16 @@ for i in trange(max(len(settings_queue),1)):
     canny_cns = set(['control_sd15_canny','control_sdxl_canny',
                     'control_sdxl_lora_128_canny', 'control_sdxl_lora_256_canny'])
     if len(canny_cns.intersection(set(controlnet_keys)))>0:
+            print("subprocess pathhh")
+            result = subprocess.run(['ls'], capture_output=True, text=True)
+            print(result.stdout)
+            if result.returncode != 0:
+                print("Error:", result.stderr)
+            import os
+            print("OSSSSS PATH")
+            print(os.getcwd())
+            import sys
+            sys.path.append(os.getcwd()) 
             from annotator.canny import CannyDetector
             apply_canny = CannyDetector()
             print('Loaded CannyDetector')
