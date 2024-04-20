@@ -7249,6 +7249,16 @@ os.makedirs(controlnet_models_dir, exist_ok=True)
 
 #@markdown ---
 
+import os
+
+print("OSSSSS PATH")
+print(os.getcwd())
+
+import sys
+# print(sys.path)
+
+sys.path.append(os.getcwd()) 
+
 if 'control_multi' in model_version:
   os.chdir(f"{root_dir}/ControlNet/")
   from annotator.util import resize_image, HWC3
