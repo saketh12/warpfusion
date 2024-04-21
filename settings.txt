@@ -114,7 +114,7 @@
     "warp_strength": 1.0,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        7.5
+        5
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
