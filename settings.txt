@@ -16,7 +16,7 @@
     "width": 987,
     "height": 1754,
     "diffusion_model": "stable_diffusion",
-    "diffusion_steps": 1000,
+    "diffusion_steps": 300,
     "video_init_path": "video.mp4",
     "extract_nth_frame": 1,
     "flow_video_init_path": null,
@@ -114,7 +114,7 @@
     "warp_strength": 1.0,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        3
+        7.5
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
