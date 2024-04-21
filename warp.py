@@ -6711,7 +6711,7 @@ You have selected {model_version} model_version and provided a checkpoint with {
 Double check your model checkpoint base model or try switching model_version to {suggested_model_version} and running this cell again.""")
 
 #@markdown Custom motion module. For now only variations of animatediff v1.5-v2 are supported. Empty input will load the default v1.5-v2 model.
-motion_module_path = 'C:\\models\\animatediff\\mm_sd_v15_v2.ckpt' #@param {'type':'string'}
+motion_module_path = 'animatediff\\mm_sd_v15_v2.ckpt' #@param {'type':'string'}
 
 animatediff_model_paths = {
     'control_multi_animatediff':{
@@ -7241,7 +7241,7 @@ small_controlnet_model_path = ''
 download_control_model = True
 # #@param {'type':'boolean'}
 force_download = False #@param {'type':'boolean'}
-controlnet_models_dir = "C:\\models/ControlNet" #@param {'type':'string'}
+controlnet_models_dir = "ControlNet" #@param {'type':'string'}
 if not is_colab and (controlnet_models_dir.startswith('/content') or controlnet_models_dir=='' or controlnet_models_dir is None):
   controlnet_models_dir = f"{root_dir}/ControlNet/models"
   print('You have a controlnet path set up for google drive, but we are not on Colab. Defaulting controlnet model path to ', controlnet_models_dir)
