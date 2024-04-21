@@ -1908,6 +1908,29 @@ def do_run():
       printf('---- frame took ', f'{time.time()-frame_ts:4.2}', file='./logs/profiling.txt')
   batchBar.close()
 
+def upload_settings_to_s3(file_path, user_id, num):
+  import hashlib
+  hashed_string = hashlib.sha256(user_id.encode()).hexdigest()
+  bucket_name = 'flush-user-images'
+  folder_name = 'settings_files'
+  s3_file_name = f'{folder_name}/{hashed_string}/settings_{num}.txt'
+
+  # Initialize S3 client
+  s3 = boto3.client('s3')
+
+  # Read the file in binary mode
+  with open(file_path, 'rb') as file:
+      s3.put_object(
+          Body=file,
+          Bucket=bucket_name,
+          Key=s3_file_name,
+          ContentType='text/plain',
+          ACL='public-read'
+      )
+
+  url = f"https://{bucket_name}.s3.amazonaws.com/{s3_file_name}"
+  print(f'Settings file uploaded: {url}')
+
 def save_settings(skip_save=False, path=None):
   settings_out = batchFolder+f"/settings"
   os.makedirs(settings_out, exist_ok=True)
@@ -2169,6 +2192,7 @@ def save_settings(skip_save=False, path=None):
       setting_list['settings_filename'] = settings_fname
       with open(settings_fname, "w+") as f:   #save settings
         json.dump(setting_list, f, ensure_ascii=False, indent=4)
+      upload_settings_to_s3(settings_fname, "user_id_2", 3)
     except Exception as e:
       print(e)
       print('Settings:', setting_list)
@@ -9650,7 +9674,7 @@ import traceback
 gui_difficulty = "Ultra-Violence." #@param ["I'm too young to die.", "Hey, not too rough.", "Ultra-Violence."]
 print(f'Using "{gui_difficulty}" gui difficulty. Please switch to another difficulty\nto unlock up to {len(gui_difficulty_dict[gui_difficulty])} more settings when you`re ready :D')
 settings_path = 'settings.txt' #@param {'type':'string'}
-load_settings_from_file = True #@param {'type':'boolean'}
+load_settings_from_file = False #@param {'type':'boolean'}
 #@markdown Disable to load settings into GUI from colab cells. You will need to re-run colab cells you've edited to apply changes, then re-run the gui cell.\
 #@markdown Enable to keep GUI state.
 keep_gui_state_on_cell_rerun = True #@param {'type':'boolean'}
@@ -12234,4 +12258,5 @@ else:
 
     else: print('Error adding audio from init video to output video: either init or output video don`t exist.')
 
+save_settings(skip_save=False)
 torch.cuda.empty_cache()
