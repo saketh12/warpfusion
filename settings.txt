@@ -1,7 +1,7 @@
 {
     "text_prompts": {
         "0": [
-            "soccer player, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marble:1>"
+            "marblesh, marble, marblee style, soccer player, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marble:1>"
         ]
     },
     "user_comment": "v0.30",
