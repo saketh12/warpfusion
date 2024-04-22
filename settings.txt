@@ -1,7 +1,7 @@
 {
     "text_prompts": {
         "0": [
-            "LEGO BrickHeadz, 8k uhd, dslr, high quality, modelshoot style, analog style, mdjrny-v4 style, <lora:lego:0.35>"
+            "marblesh, marble, marblee style, soccer player, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marble:1>"
         ]
     },
     "user_comment": "v0.30",
@@ -13,7 +13,7 @@
     "clamp_grad": true,
     "clamp_max": 2,
     "seed": 4275770367,
-    "width": 704,
+    "width": 720,
     "height": 1280,
     "diffusion_model": "stable_diffusion",
     "diffusion_steps": 1000,
@@ -51,7 +51,7 @@
     "code_randomness": 0.1,
     "mask_result": false,
     "reverse_cc_order": true,
-    "flow_lq": true,
+    "flow_lq": null,
     "use_predicted_noise": false,
     "clip_guidance_scale": 0,
     "clip_type": "ViTrue",
