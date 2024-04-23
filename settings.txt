@@ -48,7 +48,7 @@
     "dynamic_thresh": 30,
     "warp_interp": 1,
     "fixed_code": false,
-    "code_randomness": 0.1,
+    "code_randomness": 0.05,
     "mask_result": false,
     "reverse_cc_order": true,
     "flow_lq": null,
