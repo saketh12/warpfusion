@@ -1,7 +1,7 @@
 {
     "text_prompts": {
         "0": [
-            "basketball player, marble style, marblesh, marblee style, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marbleone:1>"
+            "basketball player, marble style, realistic marblesh, marble, marblee style,made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marbleone:1>"
         ]
     },
     "user_comment": "v0.30",
@@ -114,7 +114,7 @@
     "warp_strength": 1,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        5
+        15
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
@@ -129,7 +129,7 @@
     "warp_towards_init": "off",
     "init_grad": false,
     "grad_denoised": true,
-    "colormatch_after": true,
+    "colormatch_after": false,
     "colormatch_turbo": false,
     "model_version": "control_multi",
     "cond_image_src": "init",
@@ -231,7 +231,7 @@
     "controlnet_low_vram": false,
     "mask_paths": [],
     "controlnet_mode": "controlnet",
-    "normalize_cn_weights": false,
+    "normalize_cn_weights": true,
     "apply_freeu_after_control": false,
     "do_freeunet": false,
     "batch_length": 32,
@@ -264,18 +264,18 @@
         1
     ],
     "edges_consistency_schedule": [
-        0
+        1
     ],
     "consistency_blur_schedule": [
-        0
+        1
     ],
     "consistency_dilate_schedule": [
-        1
+        3
     ],
     "soften_consistency_schedule": [
         0
     ],
-    "use_tiled_vae": true,
+    "use_tiled_vae": false,
     "num_tiles": [
         2,
         2
