@@ -1,7 +1,7 @@
 {
     "text_prompts": {
         "0": [
-            "anime basketball players, muscular, phoenix, on fire, studio ghibli style studio ghibli, <lora:studio_ghibli:1>"
+            "basketball player, marblesh, marble, marblee style,made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marbleone:1>"
         ]
     },
     "user_comment": "v0.30",
