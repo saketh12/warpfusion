@@ -13,8 +13,8 @@
     "clamp_grad": true,
     "clamp_max": 2,
     "seed": 4275770367,
-    "width": 1056,
-    "height": 1920,
+    "width": 720,
+    "height": 1280,
     "diffusion_model": "stable_diffusion",
     "diffusion_steps": 1000,
     "video_init_path": "video.mp4",
@@ -114,7 +114,7 @@
     "warp_strength": 1,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        15
+        5
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
