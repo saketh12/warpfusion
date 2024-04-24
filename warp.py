@@ -144,6 +144,7 @@ createPath(initDirPath)
 outDirPath = os.path.join(root_path,'images_out')
 createPath(outDirPath)
 root_dir = os.getcwd()
+print("ROOOT DIR", root_dir)
 
 if is_colab:
     root_dir = '/content/'
