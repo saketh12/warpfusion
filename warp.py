@@ -287,6 +287,9 @@ USE_ADABINS = False
 root_path = os.getcwd()
 model_path = f'{root_path}/models'
 
+print("Current directory:", os.getcwd())
+print("Listing directories in current path:", os.listdir('.'))
+
 # if skip_install:
 #   warp_installer.pull_repos(is_colab)
 # else:
@@ -294,6 +297,7 @@ model_path = f'{root_path}/models'
 
 sys.path.append(f'{PROJECT_DIR}/BLIP')
 executed_cells[cell_name] = True
+
 
 
 
