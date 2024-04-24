@@ -231,7 +231,7 @@
     "controlnet_low_vram": false,
     "mask_paths": [],
     "controlnet_mode": "controlnet",
-    "normalize_cn_weights": true,
+    "normalize_cn_weights": false,
     "apply_freeu_after_control": false,
     "do_freeunet": false,
     "batch_length": 32,
@@ -264,18 +264,18 @@
         1
     ],
     "edges_consistency_schedule": [
-        1
+        0
     ],
     "consistency_blur_schedule": [
-        1
+        0
     ],
     "consistency_dilate_schedule": [
-        3
+        1
     ],
     "soften_consistency_schedule": [
         0
     ],
-    "use_tiled_vae": false,
+    "use_tiled_vae": true,
     "num_tiles": [
         2,
         2
