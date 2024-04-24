@@ -8866,6 +8866,8 @@ cell_name = 'prompts'
 # check_execution(cell_name)
 
 
+print("USER PROMPT", user_prompt)
+
 text_prompts = {0: [user_prompt]} #{0: ["marblesh, marble, marblee style, soccer player, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marble:1>"]} #{0: [user_prompt]}
 # text_prompts = {0: ['a beautiful highly detailed cyberpunk mechanical \
 # augmented most beautiful (woman) ever, cyberpunk 2077, neon, dystopian, \
