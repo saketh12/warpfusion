@@ -167,7 +167,7 @@
     "cb_fixed_code": false,
     "cb_norm_latent": false,
     "guidance_use_start_code": true,
-    "offload_model": true,
+    "offload_model": false,
     "controlnet_preprocess": true,
     "small_controlnet_model_path": "ControlNet/control_v11p_sd15_softedge.pth",
     "use_scale": false,
