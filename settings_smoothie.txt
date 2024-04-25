@@ -1,20 +1,11 @@
 {
-    "text_prompts": {
-        "0": [
-            "marblesh, marble, marblee style, soccer player, made of marble, renaissance, white marble skin, bodybuilder, veins, shredded, giant, in the stage, shirtless, <lora:marble:1>"
-        ]
-    },
     "user_comment": "v0.30",
     "image_prompts": {},
     "range_scale": 0,
     "sat_scale": 0,
-    "max_frames": 30,
     "init_image": "",
     "clamp_grad": true,
     "clamp_max": 2,
-    "seed": 4275770367,
-    "width": 704,
-    "height": 1280,
     "diffusion_model": "stable_diffusion",
     "diffusion_steps": 1000,
     "video_init_path": "video.mp4",
@@ -286,16 +277,5 @@
     "b2": 1.4,
     "s1": 0.9,
     "s2": 0.2,
-    "noise_mode": "reconstructed",
-    "disable_rec_noise_controlnets": true,
-    "batched_adiff_rec_noise": true,
-    "rec_separate_uc": true,
-    "rec_neg_prompts": {
-        "0": [
-            ""
-        ]
-    },
-    "rec_noise_scale": 1,
-    "rec_steps_cutoff": 0,
     "settings_filename": "settings.txt"
 }
