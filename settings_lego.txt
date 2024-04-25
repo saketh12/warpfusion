@@ -255,18 +255,18 @@
         1
     ],
     "edges_consistency_schedule": [
-        0
+        1
     ],
     "consistency_blur_schedule": [
-        0
+        1
     ],
     "consistency_dilate_schedule": [
         1
     ],
     "soften_consistency_schedule": [
-        0
+        3
     ],
-    "use_tiled_vae": true,
+    "use_tiled_vae": false,
     "num_tiles": [
         2,
         2
