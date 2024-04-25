@@ -11098,6 +11098,7 @@ for i in trange(max(len(settings_queue),1)):
     except: pass
     print('Checking downloaded Annotator and ControlNet Models')
     print("CONTROLNET MULTI MODEL KEYS", controlnet_multimodel)
+    print("CONTROLNET MODEL URLS", control_model_urls)
     for controlnet in controlnet_multimodel.keys():
       controlnet_settings = controlnet_multimodel[controlnet]
       weight = controlnet_settings["weight"]
