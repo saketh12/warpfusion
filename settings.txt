@@ -221,7 +221,7 @@
     "normalize_prompt_weights": true,
     "controlnet_low_vram": false,
     "mask_paths": [],
-    "controlnet_mode": "balanced",
+    "controlnet_mode": "controlnet",
     "normalize_cn_weights": true,
     "apply_freeu_after_control": false,
     "do_freeunet": false,
