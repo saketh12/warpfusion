@@ -266,7 +266,7 @@
     "soften_consistency_schedule": [
         0
     ],
-    "use_tiled_vae": false,
+    "use_tiled_vae": true,
     "num_tiles": [
         2,
         2
