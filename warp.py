@@ -6214,7 +6214,7 @@ print("BATCH FOLDER", batchFolder)
 #@markdown  ###**Output Size  Settings**
 #@markdown Specify desired output size here  [width,height] or use a single number to resize the frame keeping aspect ratio.\
 #@markdown Don't forget to rerun all steps after changing the width height (including forcing optical flow generation)
-width_height = 1280#@param{type: 'raw'}
+width_height = user_height#1280#@param{type: 'raw'}
 #Get corrected sizes
 #@markdown Make sure the resolution is divisible by that number. The Default 64 is the most stable.
 
