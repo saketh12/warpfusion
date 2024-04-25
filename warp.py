@@ -12,6 +12,7 @@ if len(sys.argv) > 4:
 user_prompt = sys.argv[1]
 user_width = int(float(sys.argv[2]))
 user_height = int(float(sys.argv[3]))
+load_settings_param = sys.argv[4]
 
 print("Prompt:", user_prompt)
 
@@ -9644,7 +9645,7 @@ import traceback
 gui_difficulty = "Ultra-Violence." #@param ["I'm too young to die.", "Hey, not too rough.", "Ultra-Violence."]
 print(f'Using "{gui_difficulty}" gui difficulty. Please switch to another difficulty\nto unlock up to {len(gui_difficulty_dict[gui_difficulty])} more settings when you`re ready :D')
 settings_path = 'settings.txt' #@param {'type':'string'}
-load_settings_from_file = True #@param {'type':'boolean'}
+load_settings_from_file = load_settings_param #@param {'type':'boolean'}
 #@markdown Disable to load settings into GUI from colab cells. You will need to re-run colab cells you've edited to apply changes, then re-run the gui cell.\
 #@markdown Enable to keep GUI state.
 keep_gui_state_on_cell_rerun = True #@param {'type':'boolean'}
