@@ -226,7 +226,7 @@
     "do_freeunet": false,
     "batch_length": 32,
     "batch_overlap": 8,
-    "looped_noise": false,
+    "looped_noise": true,
     "overlap_stylized": true,
     "context_length": 16,
     "context_overlap": 10,
