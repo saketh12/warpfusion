@@ -11091,6 +11091,7 @@ for i in trange(max(len(settings_queue),1)):
       sd_model.control_model.cpu()
     except: pass
     print('Checking downloaded Annotator and ControlNet Models')
+    print("CONTROLNET MULTI MODEL KEYS", controlnet_multimodel)
     for controlnet in controlnet_multimodel.keys():
       controlnet_settings = controlnet_multimodel[controlnet]
       weight = controlnet_settings["weight"]
@@ -11108,6 +11109,7 @@ for i in trange(max(len(settings_queue),1)):
               pathlib.Path(small_controlnet_model_path).unlink()
             except: pass
             print(f'Downloading small {controlnet} model... ')
+            print("SMALL URL", small_url, small_controlnet_model_path)
             wget.download(small_url,  small_controlnet_model_path)
             print(f'Downloaded small {controlnet} model.')
 
