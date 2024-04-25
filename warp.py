@@ -12,7 +12,12 @@ if len(sys.argv) > 4:
 user_prompt = sys.argv[1]
 user_width = int(float(sys.argv[2]))
 user_height = int(float(sys.argv[3]))
-load_settings_param = sys.argv[5]
+load_settings_param_str = sys.argv[5]
+
+if load_settings_param_str == "False":
+  load_settings_param = False
+elif load_settings_param_str == "True":
+  load_settings_param = True
 
 print("Prompt:", user_prompt)
 
