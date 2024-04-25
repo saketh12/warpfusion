@@ -1,9 +1,4 @@
 {
-    "text_prompts": {
-        "0": [
-            "anime basketball players, muscular, phoenix, on fire, studio ghibli style studio ghibli, <lora:studio_ghibli:1>"
-        ]
-    },
     "user_comment": "v0.30",
     "image_prompts": {},
     "range_scale": 0,
