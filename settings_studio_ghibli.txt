@@ -144,7 +144,6 @@
         0,
         0
     ],
-    "detect_resolution": 768,
     "bg_threshold": 0.4,
     "diffuse_inpaint_mask_blur": 25,
     "diffuse_inpaint_mask_thresh": 0.8,
@@ -203,7 +202,7 @@
     "control_sd15_seg_detector": "Seg_UFADE20K",
     "control_sd15_scribble_detector": "PIDI",
     "control_sd15_lineart_coarse": false,
-    "control_sd15_inpaint_mask_source": "consistency_mask",
+    "control_sd15_inpaint_mask_source":f "consistency_mask",
     "control_sd15_shuffle_source": "color_video",
     "control_sd15_shuffle_1st_source": "color_video",
     "overwrite_rec_noise": false,
