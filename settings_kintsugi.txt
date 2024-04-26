@@ -45,16 +45,16 @@
     "flow_lq": null,
     "use_predicted_noise": false,
     "clip_guidance_scale": 0,
-    "clip_type": "ViT-H-14",
+    "clip_type": "ViTrue",
     "clip_pretrain": "laion2b_s32b_b79k",
     "missed_consistency_weight": 1,
     "overshoot_consistency_weight": 1,
-    "edges_consistency_weight": 1,
+    "edges_consistency_weight": 0,
     "style_strength_schedule": [
-        0.7
+        1
     ],
     "flow_blend_schedule": [
-        0.8
+        1
     ],
     "steps_schedule": {
         "0": 25
@@ -91,7 +91,7 @@
     "end_karras_ramp_early": false,
     "use_background_mask": false,
     "apply_mask_after_warp": true,
-    "background": "init_video",
+    "background": "none",
     "background_source": "red",
     "mask_source": "init_video",
     "extract_background_mask": false,
@@ -122,7 +122,7 @@
     "grad_denoised": true,
     "colormatch_after": true,
     "colormatch_turbo": false,
-    "model_version": "control_multi",
+    "model_version": "control_multi_animatediff",
     "cond_image_src": "init",
     "warp_num_k": 128,
     "warp_forward": false,
