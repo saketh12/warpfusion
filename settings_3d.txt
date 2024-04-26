@@ -107,6 +107,7 @@
     "cfg_scale_schedule": [
         5
     ],
+    "detect_resolution": 720,
     "respect_sched": true,
     "color_match_frame_str": 0.5,
     "colormatch_offset": 0,
