@@ -49,7 +49,7 @@
     "clip_pretrain": "laion2b_s32b_b79k",
     "missed_consistency_weight": 1,
     "overshoot_consistency_weight": 1,
-    "edges_consistency_weight": 0,
+    "edges_consistency_weight": 1,
     "style_strength_schedule": [
         1
     ],
