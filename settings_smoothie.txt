@@ -35,7 +35,7 @@
     "low_brightness_adjust_fix_amount": 2,
     "max_brightness_threshold": 254,
     "min_brightness_threshold": 1,
-    "enable_adjust_brightness": false,
+    "enable_adjust_brightness": true,
     "dynamic_thresh": 30,
     "warp_interp": 1,
     "fixed_code": false,
@@ -43,13 +43,13 @@
     "mask_result": false,
     "reverse_cc_order": true,
     "flow_lq": null,
-    "use_predicted_noise": false,
+    "use_predicted_noise": true,
     "clip_guidance_scale": 0,
     "clip_type": "ViTrue",
     "clip_pretrain": "laion2b_s32b_b79k",
     "missed_consistency_weight": 1,
     "overshoot_consistency_weight": 1,
-    "edges_consistency_weight": 1,
+    "edges_consistency_weight": 1.5,
     "style_strength_schedule": [
         1
     ],
@@ -57,7 +57,7 @@
         1
     ],
     "steps_schedule": {
-        "0": 20
+        "0": 25
     },
     "init_scale_schedule": [
         0,
@@ -105,7 +105,7 @@
     "warp_strength": 1.0,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        5
+        10
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
@@ -144,7 +144,7 @@
         0,
         0
     ],
-    "detect_resolution": 400,
+    "detect_resolution": 720,
     "bg_threshold": 0.4,
     "diffuse_inpaint_mask_blur": 25,
     "diffuse_inpaint_mask_thresh": 0.8,
