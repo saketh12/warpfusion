@@ -144,7 +144,6 @@
         0,
         0
     ],
-    "detect_resolution": 768,
     "bg_threshold": 0.4,
     "diffuse_inpaint_mask_blur": 25,
     "diffuse_inpaint_mask_thresh": 0.8,
