@@ -144,7 +144,6 @@
         0,
         0
     ],
-    "detect_resolution": 720,
     "bg_threshold": 0.4,
     "diffuse_inpaint_mask_blur": 25,
     "diffuse_inpaint_mask_thresh": 0.8,
@@ -173,7 +172,6 @@
     "small_controlnet_model_path": "ControlNet/control_v11p_sd15_softedge.pth",
     "use_scale": false,
     "g_invert_mask": false,
-    "controlnet_multimodel": "{\"control_sd15_inpaint\": {\"weight\": 0.2, \"start\": 0.0, \"end\": 0.9, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"stylized\"}, \"control_sd15_depth\": {\"weight\": 1.0, \"start\": 0.0, \"end\": 1.0, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_softedge\": {\"weight\": 1.0, \"start\": 0.0, \"end\": 0.7, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_ip2p\": {\"weight\": 0.5, \"start\": 0.0, \"end\": 0.71, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_tile\": {\"weight\": 0.2, \"start\": 0.0, \"end\": 0.82, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}}",
     "img_zero_uncond": false,
     "do_softcap": false,
     "softcap_thresh": 0.9,
