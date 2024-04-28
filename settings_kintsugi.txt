@@ -45,16 +45,16 @@
     "flow_lq": null,
     "use_predicted_noise": false,
     "clip_guidance_scale": 0,
-    "clip_type": "ViTrue",
+    "clip_type": "ViT-H-14",
     "clip_pretrain": "laion2b_s32b_b79k",
     "missed_consistency_weight": 1,
     "overshoot_consistency_weight": 1,
-    "edges_consistency_weight": 0,
+    "edges_consistency_weight": 1,
     "style_strength_schedule": [
-        1
+        0.7
     ],
     "flow_blend_schedule": [
-        1
+        0.8
     ],
     "steps_schedule": {
         "0": 25
@@ -91,7 +91,7 @@
     "end_karras_ramp_early": false,
     "use_background_mask": false,
     "apply_mask_after_warp": true,
-    "background": "none",
+    "background": "init_video",
     "background_source": "red",
     "mask_source": "init_video",
     "extract_background_mask": false,
@@ -105,7 +105,7 @@
     "warp_strength": 1,
     "flow_override_map": [],
     "cfg_scale_schedule": [
-        5
+        7.5
     ],
     "respect_sched": true,
     "color_match_frame_str": 0.5,
@@ -120,9 +120,9 @@
     "warp_towards_init": "off",
     "init_grad": false,
     "grad_denoised": true,
-    "colormatch_after": true,
+    "colormatch_after": false,
     "colormatch_turbo": false,
-    "model_version": "control_multi_animatediff",
+    "model_version": "control_multi",
     "cond_image_src": "init",
     "warp_num_k": 128,
     "warp_forward": false,
@@ -144,6 +144,7 @@
         0,
         0
     ],
+    "detect_resolution": 768,
     "bg_threshold": 0.4,
     "diffuse_inpaint_mask_blur": 25,
     "diffuse_inpaint_mask_thresh": 0.8,
@@ -172,6 +173,7 @@
     "small_controlnet_model_path": "ControlNet/control_v11p_sd15_softedge.pth",
     "use_scale": false,
     "g_invert_mask": false,
+    "controlnet_multimodel": "{\"control_sd15_inpaint\": {\"weight\": 0.2, \"start\": 0.0, \"end\": 0.9, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"stylized\"}, \"control_sd15_depth\": {\"weight\": 1.0, \"start\": 0.0, \"end\": 1.0, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_softedge\": {\"weight\": 1.0, \"start\": 0.0, \"end\": 0.7, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_ip2p\": {\"weight\": 0.5, \"start\": 0.0, \"end\": 0.71, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}, \"control_sd15_tile\": {\"weight\": 0.2, \"start\": 0.0, \"end\": 0.82, \"preprocess\": \"global\", \"mode\": \"global\", \"detect_resolution\": -1, \"source\": \"global\"}}",
     "img_zero_uncond": false,
     "do_softcap": false,
     "softcap_thresh": 0.9,
