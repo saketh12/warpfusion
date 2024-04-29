@@ -11101,56 +11101,56 @@ for i in trange(max(len(settings_queue),1)):
     print("CONTROLNET MULTI MODEL KEYS", controlnet_multimodel)
     print("CONTROLNET MODEL URLS", control_model_urls)
     print("CONTROLNET PATHS", control_model_filenames)
-    # for controlnet in controlnet_multimodel.keys():
-    #   controlnet_settings = controlnet_multimodel[controlnet]
-    #   weight = controlnet_settings["weight"]
-    #   if weight!=0 and not skip_diffuse_cell:
-    #     small_url = control_model_urls[controlnet]
-    #     if controlnet in control_model_filenames.keys():
-    #       local_filename = control_model_filenames[controlnet]
-    #     else: local_filename = small_url.split('/')[-1]
-    #     print(f"Loading {controlnet} from checkpoint: {local_filename}")
-    #     small_controlnet_model_path = f"{controlnet_models_dir}/{local_filename}"
-    #     if use_small_controlnet and os.path.exists(model_path) and not os.path.exists(small_controlnet_model_path):
-    #       print(f'Model found at {model_path}. Small model not found at {small_controlnet_model_path}.')
-    #       if not os.path.exists(small_controlnet_model_path) or force_download:
-    #         try:
-    #           pathlib.Path(small_controlnet_model_path).unlink()
-    #         except: pass
-    #         print(f'Downloading small {controlnet} model... ')
-    #         print("SMALL URL", small_url, small_controlnet_model_path)
-    #         wget.download(small_url,  small_controlnet_model_path)
-    #         print(f'Downloaded small {controlnet} model.')
+    for controlnet in controlnet_multimodel.keys():
+      controlnet_settings = controlnet_multimodel[controlnet]
+      weight = controlnet_settings["weight"]
+      if weight!=0 and not skip_diffuse_cell:
+        small_url = control_model_urls[controlnet]
+        if controlnet in control_model_filenames.keys():
+          local_filename = control_model_filenames[controlnet]
+        else: local_filename = small_url.split('/')[-1]
+        print(f"Loading {controlnet} from checkpoint: {local_filename}")
+        small_controlnet_model_path = f"{controlnet_models_dir}/{local_filename}"
+        if use_small_controlnet and os.path.exists(model_path) and not os.path.exists(small_controlnet_model_path):
+          print(f'Model found at {model_path}. Small model not found at {small_controlnet_model_path}.')
+          if not os.path.exists(small_controlnet_model_path) or force_download:
+            try:
+              pathlib.Path(small_controlnet_model_path).unlink()
+            except: pass
+            print(f'Downloading small {controlnet} model... ')
+            print("SMALL URL", small_url, small_controlnet_model_path)
+            wget.download(small_url,  small_controlnet_model_path)
+            print(f'Downloaded small {controlnet} model.')
 
-    #     """download annotators"""
-    #     if controlnet in control_anno_urls.keys():
-    #       for anno_url in control_anno_urls[controlnet]:
-    #         anno_path = f'{root_dir}/ControlNet/annotator/ckpts'
-    #         anno_fname = anno_url.split('/')[-1]
-    #         os.makedirs(anno_path, exist_ok=True)
-    #         anno_path = os.path.join(anno_path, anno_fname)
-    #         if not os.path.exists(anno_path) or force_download:
-    #           try:
-    #             pathlib.Path(anno_path).unlink()
-    #           except: pass
-    #           print(f'Downloading {anno_fname} annotator for the {controlnet} model... ')
-    #           wget.download(anno_url,  anno_path)
-    #           print(f'Downloaded {anno_fname} annotator for the {controlnet} model... ')
+        """download annotators"""
+        if controlnet in control_anno_urls.keys():
+          for anno_url in control_anno_urls[controlnet]:
+            anno_path = f'{root_dir}/ControlNet/annotator/ckpts'
+            anno_fname = anno_url.split('/')[-1]
+            os.makedirs(anno_path, exist_ok=True)
+            anno_path = os.path.join(anno_path, anno_fname)
+            if not os.path.exists(anno_path) or force_download:
+              try:
+                pathlib.Path(anno_path).unlink()
+              except: pass
+              print(f'Downloading {anno_fname} annotator for the {controlnet} model... ')
+              wget.download(anno_url,  anno_path)
+              print(f'Downloaded {anno_fname} annotator for the {controlnet} model... ')
 
-    #     """download faceid loras"""
-    #     if controlnet in ipadapter_face_loras.keys():
-    #       for lora_url in ipadapter_face_loras[controlnet]:
-    #         lora_dir = lora_dir
-    #         lora_fname = lora_url.split('/')[-1]
-    #         os.makedirs(lora_dir, exist_ok=True)
-    #         lora_path = os.path.join(lora_dir, lora_fname)
-    #         if not os.path.exists(lora_path) or force_download:
-    #           try:
-    #             pathlib.Path(lora_path).unlink()
-    #           except: pass
-    #           print(f'Downloading {lora_fname} lora for the {controlnet} model... ')
-    #           wget.download(lora_url,  lora_path)
-    #           print(f'Downloaded {lora_fname} lora for the {controlnet} model... ')
+        """download faceid loras"""
+        if controlnet in ipadapter_face_loras.keys():
+          for lora_url in ipadapter_face_loras[controlnet]:
+            lora_dir = lora_dir
+            lora_fname = lora_url.split('/')[-1]
+            os.makedirs(lora_dir, exist_ok=True)
+            lora_path = os.path.join(lora_dir, lora_fname)
+            if not os.path.exists(lora_path) or force_download:
+              try:
+                pathlib.Path(lora_path).unlink()
+              except: pass
+              print(f'Downloading {lora_fname} lora for the {controlnet} model... ')
+              wget.download(lora_url,  lora_path)
+              print(f'Downloaded {lora_fname} lora for the {controlnet} model... ')
 
     print('Loading ControlNet Models')
     try:
