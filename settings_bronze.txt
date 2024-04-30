@@ -49,7 +49,7 @@
     "clip_pretrain": "laion2b_s32b_b79k",
     "missed_consistency_weight": 1,
     "overshoot_consistency_weight": 1,
-    "edges_consistency_weight": 0,
+    "edges_consistency_weight": 1,
     "style_strength_schedule": [
         1
     ],
@@ -156,7 +156,7 @@
     "distance_threshold": 0.1,
     "masked_guidance": false,
     "cc_masked_diffusion_schedule": [
-        0
+        0.7
     ],
     "alpha_masked_diffusion": 0.0,
     "inverse_mask_order": false,
@@ -168,7 +168,7 @@
     "cb_fixed_code": false,
     "cb_norm_latent": false,
     "guidance_use_start_code": true,
-    "offload_model": true,
+    "offload_model": false,
     "controlnet_preprocess": true,
     "small_controlnet_model_path": "ControlNet/control_v11p_sd15_softedge.pth",
     "use_scale": false,
@@ -189,7 +189,7 @@
     "rec_cfg": 1.0,
     "rec_prompts": {
         "0": [
-            "beautiful person"
+            "woman walking on a treadmill"
         ]
     },
     "inpainting_mask_source": "none",
@@ -206,7 +206,7 @@
     "control_sd15_inpaint_mask_source": "consistency_mask",
     "control_sd15_shuffle_source": "color_video",
     "control_sd15_shuffle_1st_source": "color_video",
-    "overwrite_rec_noise": true,
+    "overwrite_rec_noise": false,
     "use_legacy_cc": false,
     "missed_consistency_dilation": 2,
     "edge_consistency_width": 11,
@@ -215,7 +215,7 @@
     "reference_source": "init",
     "reference_mode": "Balanced",
     "use_legacy_fixed_code": false,
-    "consistency_dilate": 1,
+    "consistency_dilate": 3,
     "prompt_patterns_sched": {},
     "sd_batch_size": 2,
     "normalize_prompt_weights": true,
@@ -237,7 +237,7 @@
     "num_flow_workers": 0,
     "flow_save_img_preview": false,
     "lazy_warp": true,
-    "clip_skip": 2,
+    "clip_skip": 1,
     "qr_cn_mask_clip_high": 255,
     "qr_cn_mask_clip_low": 0,
     "qr_cn_mask_invert": false,
