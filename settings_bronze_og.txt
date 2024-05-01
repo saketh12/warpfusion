@@ -166,6 +166,7 @@
     "cc_masked_diffusion_schedule": [
         0
     ],
+    "detect_resolution": 1280,
     "alpha_masked_diffusion": 0.0,
     "inverse_mask_order": false,
     "invert_alpha_masked_diffusion": false,
