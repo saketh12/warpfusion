@@ -36,7 +36,6 @@
     "max_brightness_threshold": 254,
     "min_brightness_threshold": 1,
     "enable_adjust_brightness": false,
-    "detect_resolution": 1280,
     "dynamic_thresh": 30,
     "warp_interp": 1,
     "fixed_code": false,
