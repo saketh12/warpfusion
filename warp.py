@@ -6263,7 +6263,9 @@ video_init_path = "video.mp4" #@param {type: 'string'}
 #     size = (int(x*ratio)),(int(y*ratio))
 #     return size
 
-def fit_size(size, max_width=1024, max_height=1024):
+def fit_size(size, maxsize=512):
+    max_width = 1024
+    max_height = 1024
     original_width, original_height = size
 
     # Calculate scaling factors independently for width and height
