@@ -6256,21 +6256,38 @@ looped_video_duration_sec = 2 #@param {'type':'number'}
 
 video_init_path = "video.mp4" #@param {type: 'string'}
 
-def fit_size(size,maxsize=512):
-    maxdim = max(size)
-    ratio = maxsize/maxdim
-    x,y = size
-    size = (int(x*ratio)),(int(y*ratio))
-    return size
+# def fit_size(size,maxsize=512):
+#     maxdim = max(size)
+#     ratio = maxsize/maxdim
+#     x,y = size
+#     size = (int(x*ratio)),(int(y*ratio))
+#     return size
+
+def fit_size(size, max_width=1024, max_height=1024):
+    original_width, original_height = size
+
+    # Calculate scaling factors independently for width and height
+    width_ratio = max_width / original_width if original_width > max_width else 1
+    height_ratio = max_height / original_height if original_height > max_height else 1
+
+    # Choose the smaller ratio to ensure the image fits within the max dimensions
+    scaling_factor = min(width_ratio, height_ratio)
+
+    # Calculate the new dimensions based on the scaling factor
+    new_width = int(original_width * scaling_factor)
+    new_height = int(original_height * scaling_factor)
+    return (new_width, new_height)
 
 if video_source=='looped_init_image':
   actual_size = Image.open(init_image).size
   if isinstance(width_height, int):
-    width_height = fit_size(actual_size, width_height)
+    width_height = fit_size(actual_size)#, width_height)
 
   force_multiple_of = int(force_multiple_of)
   side_x = (width_height[0]//force_multiple_of)*force_multiple_of;
   side_y = (width_height[1]//force_multiple_of)*force_multiple_of;
+
+  print("SIDE X", side_x, "SIDE Y", side_y)
   if side_x != width_height[0] or side_y != width_height[1]:
     print(f'Changing output size to {side_x}x{side_y}. Dimensions must by multiples of {force_multiple_of}.')
   width_height = (side_x, side_y)
@@ -6278,6 +6295,8 @@ if video_source=='looped_init_image':
    'yuv420p', '-vf', f'scale={side_x}:{side_y}', f"{root_dir}/out.mp4", '-y'], stdout=subprocess.PIPE).stdout.decode('utf-8')
   print('Video saved to ', f"{root_dir}/out.mp4")
   video_init_path = f"{root_dir}/out.mp4"
+
+print("WIDTH HEIGHT", width_height)
 
 extract_nth_frame =  1#@param {type: 'number'}
 reverse = False #@param {type: 'boolean'}
