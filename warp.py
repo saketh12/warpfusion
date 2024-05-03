@@ -6218,6 +6218,10 @@ width_height = user_height#1280#@param{type: 'raw'}
 #Get corrected sizes
 #@markdown Make sure the resolution is divisible by that number. The Default 64 is the most stable.
 
+
+print("WIDTH HEIGHT", width_height)
+print("USER HEIGHT", user_height)
+
 force_multiple_of = "64" #@param [8,64]
 force_multiple_of = int(force_multiple_of)
 if isinstance(width_height, list):
@@ -6229,6 +6233,8 @@ if isinstance(width_height, list):
   width_height = (side_x, side_y)
 else:
   width_height = int(width_height)
+
+print("WIDTH HEIGHT", width_height)
 
 
 
